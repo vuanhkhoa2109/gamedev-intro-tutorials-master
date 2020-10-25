@@ -1,0 +1,15 @@
+<animations name="black_leopard">
+    <animation ID="BLACK_LEOPARD_ACTIVE" defaultTime="200">
+        <frame spriteID="black_leopard_2" time="200"/>
+        <frame spriteID="black_leopard_3" time="200"/>
+        <frame spriteID="black_leopard_4" time="200"/>
+    </animation>
+
+     <animation ID="BLACK_LEOPARD_IDLE" defaultTime="200">
+        <frame spriteID="black_leopard_1" time="200"/>
+    </animation>
+
+     <animation ID="BLACK_LEOPARD_JUMP" defaultTime="200">
+        <frame spriteID="black_leopard_4" time="200"/>
+    </animation>
+</animations>

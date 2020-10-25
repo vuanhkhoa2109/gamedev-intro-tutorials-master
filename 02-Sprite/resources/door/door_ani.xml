@@ -1,0 +1,5 @@
+<animations name="door">
+    <animation ID="DOOR_1" defaultTime="100">
+        <frame spriteID="door" time="100"/>
+    </animation>
+</animations>

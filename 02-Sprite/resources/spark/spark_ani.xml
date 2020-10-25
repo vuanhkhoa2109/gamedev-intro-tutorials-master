@@ -1,0 +1,5 @@
+<animations name="spark">
+    <animation ID="spark" defaultTime="100">
+        <frame spriteID="spark" time="100"/>
+    </animation> 
+</animations>

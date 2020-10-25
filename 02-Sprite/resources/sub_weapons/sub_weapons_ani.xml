@@ -1,0 +1,33 @@
+<animations name="sub_weapons">
+    <animation ID="AXE_SUB" defaultTime="100">
+        <frame spriteID="Axe_1" time="100"/>
+        <frame spriteID="Axe_2" time="100"/>
+        <frame spriteID="Axe_3" time="100"/> 
+        <frame spriteID="Axe_4" time="100"/>
+    </animation>
+
+    <animation ID="BOOMERANG_SUB" defaultTime="100">
+        <frame spriteID="Boomerang_1" time="100"/>
+        <frame spriteID="Boomerang_2" time="100"/>
+        <frame spriteID="Boomerang_3" time="100"/>
+    </animation>
+
+    <animation ID="HOLYWATER_SUB" defaultTime="100">
+        <frame spriteID="HolyWater_1" time="100"/>
+    </animation>
+
+     <animation ID="HOLY_WATER_SHATTERED_SUB" defaultTime="100">
+        <frame spriteID="HolyWater_2" time="100"/>
+        <frame spriteID="HolyWater_3" time="100"/>
+    </animation>
+
+    <animation ID="HOLYWATER_SUB" defaultTime="100">
+        <frame spriteID="HolyWater_1" time="300"/>
+        <frame spriteID="HolyWater_2" time="100"/>
+        <frame spriteID="HolyWater_3" time="100"/>
+    </animation>
+
+      <animation ID="DAGGER_SUB" defaultTime="100">
+        <frame spriteID="Dagger" time="100"/>
+    </animation>
+</animations>

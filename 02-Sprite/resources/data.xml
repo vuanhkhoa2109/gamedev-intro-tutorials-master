@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<game>
+	<textures>
+		<texture id="9999" path="resources\\bbox2.png" red="255" green="255" blue="255"/>
+		<texture id="100000" path="resources\\bbox.png" red="255" green="255" blue="255"/>
+		<texture id="200000" path="resources\\simon\\simon.png" red="255" green="0" blue="255"/>
+		<texture id="300000" path="resources\\ground\\ground.png" red="255" green="0" blue="255"/>
+		<texture id="400000" path="resources\\weapons\\weapons.png" red="255" green="0" blue="255"/>
+		<texture id="500000" path="resources\\candle\\candle.png" red="255" green="0" blue="255"/>
+		<texture id="600000" path="resources\\items\\items.png" red="255" green="0" blue="255"/>
+		<texture id="700000" path="resources\\effect\\effect.png" red="255" green="0" blue="255"/>
+		<texture id="800000" path="resources\\sub_weapons\\sub_weapons.png" red="255" green="0" blue="255"/>
+		<texture id="900000" path="resources\\stair\\stair.png" red="255" green="0" blue="255"/>
+		<texture id="1000000" path="resources\\door\\door.png" red="255" green="0" blue="255"/>
+		<texture id="1100000" path="resources\\door\\gate.png" red="255" green="0" blue="255"/>
+		<texture id="1200000" path="resources\\zombie\\zombie.png" red="255" green="0" blue="255"/>
+		<texture id="1300000" path="resources\\black_leopard\\black_leopard.png" red="255" green="0" blue="255"/>
+		<texture id="1400000" path="resources\\vampire_bat\\vampire_bat.png" red="255" green="0" blue="255"/>
+        <texture id="1500000" path="resources\\fish_man\\fish_man.png" red="255" green="0" blue="255"/>
+        <texture id="1600000" path="resources\\fire_ball\\fire_ball.png" red="255" green="0" blue="255"/>
+        <texture id="1700000" path="resources\\bubbles\\bubbles.png" red="255" green="0" blue="255"/>
+        <texture id="1800000" path="resources\\boss\\boss.png" red="255" green="0" blue="255"/>
+        <texture id="1900000" path="resources\\spark\\spark.png" red="255" green="0" blue="255"/>
+        <texture id="2000000" path="resources\\break_wall\\break_wall.png" red="255" green="0" blue="255"/>
+	</textures>
+
+	<sprites>
+		<sprite path="resources\\simon\\simon.xml" texid="200000"/>
+        <sprite path="resources\\ground\\ground.xml" texid="300000"/>
+		<sprite path="resources\\weapons\\weapons.xml" texid="400000"/>
+		<sprite path="resources\\candle\\candle.xml" texid="500000"/>
+		<sprite path="resources\\items\\items.xml" texid="600000"/>
+		<sprite path="resources\\effect\\effect.xml" texid="700000"/>
+		<sprite path="resources\\sub_weapons\\sub_weapons.xml" texid="800000"/>
+		<sprite path="resources\\stair\\stair.xml" texid="900000"/>
+		<sprite path="resources\\door\\door.xml" texid="1000000"/>
+        <sprite path="resources\\door\\gate.xml" texid="1100000"/>
+        <sprite path="resources\\zombie\\zombie.xml" texid="1200000"/>
+        <sprite path="resources\\black_leopard\\black_leopard.xml" texid="1300000"/>
+        <sprite path="resources\\vampire_bat\\vampire_bat.xml" texid="1400000"/>
+        <sprite path="resources\\fish_man\\fish_man.xml" texid="1500000"/>
+        <sprite path="resources\\fire_ball\\fire_ball.xml" texid="1600000"/>
+        <sprite path="resources\\bubbles\\bubbles.xml" texid="1700000"/>
+        <sprite path="resources\\boss\\boss.xml" texid="1800000"/>
+        <sprite path="resources\\spark\\spark.xml" texid="1900000"/>
+        <sprite path="resources\\break_wall\\break_wall.xml" texid="2000000"/>
+	</sprites>
+
+	<animations AtlasPath="Effect_sprite.xml">
+		<animation path="resources\\simon\\simon_ani.xml" />
+		<animation path="resources\\weapons\\weapons_ani.xml" />
+		<animation path="resources\\ground\\ground_ani.xml" />
+		<animation path="resources\\candle\\candle_ani.xml" />
+		<animation path="resources\\items\\items_ani.xml" />
+		<animation path="resources\\effect\\effect_ani.xml" />
+		<animation path="resources\\sub_weapons\\sub_weapons_ani.xml" />
+        <animation path="resources\\stair\\stair_ani.xml" />
+		<animation path="resources\\door\\door_ani.xml" />
+        <animation path="resources\\door\\gate_ani.xml" />
+        <animation path="resources\\zombie\\zombie_ani.xml" />
+        <animation path="resources\\black_leopard\\black_leopard_ani.xml" />
+        <animation path="resources\\vampire_bat\\vampire_bat_ani.xml" />
+        <animation path="resources\\fish_man\\fish_man_ani.xml" />
+        <animation path="resources\\fire_ball\\fire_ball_ani.xml" />
+        <animation path="resources\\bubbles\\bubbles_ani.xml" />
+        <animation path="resources\\boss\\boss_ani.xml" />
+        <animation path="resources\\spark\\spark_ani.xml" />
+        <animation path="resources\\break_wall\\break_wall_ani.xml" />
+	</animations>
+</game>

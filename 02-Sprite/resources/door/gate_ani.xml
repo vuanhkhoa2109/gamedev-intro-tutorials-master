@@ -1,0 +1,13 @@
+<animations name="gate">
+    <animation ID="DOOR_2_IDLE" defaultTime="700">
+        <frame spriteID="gate_1" time="700"/>
+    </animation>
+
+    <animation ID="DOOR_2_OPEN" defaultTime="700">
+        <frame spriteID="gate_1" time="700"/>
+        <frame spriteID="gate_2" time="700"/>
+        <frame spriteID="gate_3" time="2000"/> 
+        <frame spriteID="gate_4" time="700"/>
+        <frame spriteID="gate_1" time="1000"/>
+    </animation>
+</animations>

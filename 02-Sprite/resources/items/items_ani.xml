@@ -1,0 +1,76 @@
+<animations name="items">
+    <animation ID="AXE" defaultTime="100">
+        <frame spriteID="item_axe" time="100"/>
+    </animation>
+
+    <animation ID="BOOMERANG" defaultTime="100">
+        <frame spriteID="item_boomerang" time="100"/>
+    </animation>
+
+    <animation ID="CHAIN" defaultTime="100">
+        <frame spriteID="item_chain" time="100"/>
+    </animation>
+
+    <animation ID="CROSS" defaultTime="100">
+        <frame spriteID="item_cross" time="100"/>
+    </animation>
+
+    <animation ID="DAGGER" defaultTime="100">
+        <frame spriteID="item_dagger" time="100"/>
+    </animation>
+
+    <animation ID="DOUBLE_SHOT" defaultTime="100">
+        <frame spriteID="item_doubleshot" time="100"/>
+    </animation>
+
+    <animation ID="HOLY_WATER" defaultTime="100">
+        <frame spriteID="item_holywater" time="100"/>
+    </animation>
+
+    <animation ID="INVISIBILITY_POTION" defaultTime="100">
+        <frame spriteID="item_invisibilitypotion" time="100"/>
+    </animation>
+
+    <animation ID="LARGE_HEART" defaultTime="100">
+        <frame spriteID="item_largeheart" time="100"/>
+    </animation>
+
+    <animation ID="MAGIC_CRYSTAL" defaultTime="50">
+        <frame spriteID="item_magiccrystal_1" time="50"/>
+        <frame spriteID="item_magiccrystal_2" time="50"/>
+    </animation>
+
+    <animation ID="MONEY_BAG_RED" defaultTime="100">
+        <frame spriteID="item_redmoneybag" time="100"/>
+    </animation>
+
+    <animation ID="MONEY_BAG_WHITE" defaultTime="100">
+        <frame spriteID="item_whitemoneybag" time="100"/>
+    </animation>
+
+    <animation ID="MONEY_BAG_BLUE" defaultTime="100">
+        <frame spriteID="item_bluemoneybag" time="100"/>
+    </animation>
+
+    <animation ID="PORK_CHOP" defaultTime="100">
+        <frame spriteID="item_porkchop" time="100"/>
+    </animation>
+
+    <animation ID="SMALL_HEART" defaultTime="100">
+        <frame spriteID="item_smallheart" time="100"/>
+    </animation>
+
+    <animation ID="STOP_WATCH" defaultTime="100">
+        <frame spriteID="item_stopwatch" time="100"/>
+    </animation>
+
+    <animation ID="TRIPLE_SHOT" defaultTime="100">
+        <frame spriteID="item_tripleshot" time="100"/>
+    </animation>
+
+     <animation ID="MONEY_BAG_FLASHING" defaultTime="50">
+        <frame spriteID="item_redmoneybag" time="50"/>
+        <frame spriteID="item_bluemoneybag" time="50"/>
+        <frame spriteID="item_whitemoneybag" time="50"/>
+    </animation>
+</animations>

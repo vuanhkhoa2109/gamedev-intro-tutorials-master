@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:d5038c1723ec111e3da29eead4799973:0fab0fcbf14d9802713b61dc02f04aa9:21e4f1d785e03201a1380c7b715cf6d5$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="weapon.png" width="720" height="396">
+    <sprite n="weapon_1" x="0" y="0" w="240" h="66"/>
+    <sprite n="weapon_2" x="240" y="0" w="240" h="66"/>
+    <sprite n="weapon_3" x="480" y="0" w="240" h="66"/>
+    <sprite n="weapon_4" x="0" y="66" w="240" h="66"/>
+    <sprite n="weapon_5" x="240" y="66" w="240" h="66"/>
+    <sprite n="weapon_6" x="480" y="66" w="240" h="66"/>
+    <sprite n="weapon_7" x="0" y="132" w="240" h="66"/>
+    <sprite n="weapon_8" x="240" y="132" w="240" h="66"/>
+    <sprite n="weapon_9" x="480" y="132" w="240" h="66"/>
+    <sprite n="weapon_10" x="0" y="198" w="240" h="66"/>
+    <sprite n="weapon_11" x="240" y="198" w="240" h="66"/>
+    <sprite n="weapon_12" x="480" y="198" w="240" h="66"/>
+    <sprite n="weapon_13" x="0" y="264" w="240" h="66"/>
+    <sprite n="weapon_14" x="240" y="264" w="240" h="66"/>
+    <sprite n="weapon_15" x="480" y="264" w="240" h="66"/>
+    <sprite n="weapon_16" x="0" y="330" w="240" h="66"/>
+    <sprite n="weapon_17" x="240" y="330" w="240" h="66"/>
+    <sprite n="weapon_18" x="480" y="330" w="240" h="66"/>
+</TextureAtlas>

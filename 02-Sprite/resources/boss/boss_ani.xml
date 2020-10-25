@@ -1,0 +1,10 @@
+<animations name="boss">
+    <animation ID="BOSS_ACTIVE" defaultTime="300">
+        <frame spriteID="boss_2" time="300"/>
+        <frame spriteID="boss_3" time="300"/>
+    </animation>
+
+      <animation ID="INACTIVE" defaultTime="100">
+        <frame spriteID="boss_1" time="100"/>
+    </animation>
+</animations>

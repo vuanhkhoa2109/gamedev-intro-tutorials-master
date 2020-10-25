@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:49c5e536439b8a6ccd9816017f0ad38e:ae3b991008a1082ffbdc835ec0161955:32a274347837c2c2a251dbd69610f480$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="Items" width="32" height="502">
+    <sprite n="item_stopwatch" x="194" y="0" w="30" h="32"/>
+    <sprite n="item_smallheart" x="0" y="0" w="16" h="16"/> 
+    <sprite n="item_largeheart" x="16" y="0" w="24" h="20"/>
+    <sprite n="item_redmoneybag" x="40" y="0" w="30" h="30"/>
+    <sprite n="item_whitemoneybag" x="70" y="0" w="30" h="30"/>
+    <sprite n="item_bluemoneybag" x="100" y="0" w="30" h="30"/>
+    <sprite n="item_chain" x="130" y="0" w="30" h="32"/>
+    <sprite n="item_dagger" x="162" y="0" w="32" h="18"/>
+    <sprite n="item_cross" x="224" y="0" w="32" h="32"/>
+    <sprite n="item_axe" x="256" y="0" w="30" h="28"/>
+    <sprite n="item_invisibilitypotion" x="286" y="0" w="26" h="32"/>
+    <sprite n="item_treasurechest_1" x="312" y="0" w="32" h="24"/>
+    <sprite n="item_treasurechest_2" x="344" y="0" w="32" h="24"/>
+    <sprite n="item_boomerang" x="0" y="32" w="30" h="28"/>
+    <sprite n="item_holywater" x="30" y="32" w="32" h="32"/>
+    <sprite n="item_porkchop" x="62" y="32" w="32" h="26"/>
+    <sprite n="item_doubleshot" x="94" y="32" w="28" h="28"/>
+    <sprite n="item_tripleshot" x="164" y="32" w="28" h="28"/>
+    <sprite n="item_magiccrystal_1" x="234" y="32" w="26" h="32"/>
+    <sprite n="item_magiccrystal_2" x="260" y="32" w="26" h="32"/>
+    <sprite n="item_crown_1" x="286" y="32" w="30" h="32"/>
+    <sprite n="item_crown_2" x="316" y="32" w="30" h="32"/>
+</TextureAtlas>

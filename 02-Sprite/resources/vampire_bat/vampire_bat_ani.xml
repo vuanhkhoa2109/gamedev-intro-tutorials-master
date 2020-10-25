@@ -1,0 +1,8 @@
+<animations name="vampire_bat">
+    <animation ID="VAMPIRE_BAT_ACTIVE" defaultTime="150">
+        <frame spriteID="vampire_bat_1" time="150"/>
+        <frame spriteID="vampire_bat_2" time="150"/>
+        <frame spriteID="vampire_bat_3" time="150"/>
+        <frame spriteID="vampire_bat_4" time="150"/>
+    </animation>
+</animations>

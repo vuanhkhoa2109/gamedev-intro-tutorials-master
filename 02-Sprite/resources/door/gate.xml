@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:f0a319e7e686291ac82493ef1c503997:ceab7f0a7bdab2f0ffe1e95a966ba04e:e1a16b0d3889cdb91c185a18d6afa495$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="gate.png" width="48" height="384">
+    <sprite n="gate_1" x="0" y="0" w="48" h="96"/>
+    <sprite n="gate_2" x="0" y="96" w="48" h="96"/>
+    <sprite n="gate_3" x="0" y="192" w="48" h="96"/>
+    <sprite n="gate_4" x="0" y="288" w="48" h="96"/>
+</TextureAtlas>

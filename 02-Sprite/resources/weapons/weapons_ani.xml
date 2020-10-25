@@ -1,0 +1,31 @@
+<animations name="Weapon">
+    <animation ID="MAGIC_WHIP" defaultTime="100">
+        <frame spriteID="weapon_1" time="100"/>
+        <frame spriteID="weapon_2" time="100"/>
+        <frame spriteID="weapon_3" time="100"/>
+    </animation>
+
+     <animation ID="SHORT_CHAIN" defaultTime="100">
+        <frame spriteID="weapon_4" time="100"/>
+        <frame spriteID="weapon_5" time="100"/>
+        <frame spriteID="weapon_6" time="100"/>
+    </animation>
+
+      <animation ID="LONG_CHAIN" defaultTime="100">
+        <frame spriteID="weapon_8" time="100"/>
+        <frame spriteID="weapon_12" time="100"/>
+        <frame spriteID="weapon_16" time="100"/>
+        <!-- <frame spriteID="weapon_10" time="100"/> -->
+
+        <!-- <frame spriteID="weapon_11" time="100"/>
+        <frame spriteID="weapon_12" time="100"/>
+        <frame spriteID="weapon_13" time="100"/>
+        <frame spriteID="weapon_14" time="100"/>
+
+        <frame spriteID="weapon_15" time="100"/>
+        <frame spriteID="weapon_16" time="100"/>
+        <frame spriteID="weapon_17" time="100"/>
+        <frame spriteID="weapon_18" time="100"/> -->
+    </animation>
+
+</animations>

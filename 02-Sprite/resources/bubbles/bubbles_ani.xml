@@ -1,0 +1,5 @@
+<animations name="bubbles">
+    <animation ID="BUBBLES" defaultTime="100">
+        <frame spriteID="bubbles" time="100"/>
+    </animation>
+</animations>

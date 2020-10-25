@@ -1,0 +1,9 @@
+<animations name="stair">
+    <animation ID="STAIR_LEFT_UP" defaultTime="100">
+        <frame spriteID="stair_1" time="100"/>
+    </animation>
+
+     <animation ID="STAIR_RIGHT_DOWN" defaultTime="100">
+        <frame spriteID="stair_2" time="100"/>
+    </animation>
+</animations>

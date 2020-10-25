@@ -1,0 +1,70 @@
+<animations name="items">
+    <animation ID="AXE" defaultTime="100">
+        <frame spriteID="Axe" time="100"/>
+    </animation>
+
+    <animation ID="BOOMERANG" defaultTime="100">
+        <frame spriteID="Boomerang" time="100"/>
+    </animation>
+
+    <animation ID="CHAIN" defaultTime="100">
+        <frame spriteID="Chain" time="100"/>
+    </animation>
+
+    <animation ID="CROSS" defaultTime="100">
+        <frame spriteID="Cross" time="100"/>
+    </animation>
+
+    <animation ID="DAGGER" defaultTime="100">
+        <frame spriteID="Dagger" time="100"/>
+    </animation>
+
+    <animation ID="DOUBLE_SHOT" defaultTime="100">
+        <frame spriteID="DoubleShot" time="100"/>
+    </animation>
+
+    <animation ID="HOLY_WATER" defaultTime="100">
+        <frame spriteID="HolyWater" time="100"/>
+    </animation>
+
+    <animation ID="INVISIBILITY_POTION" defaultTime="100">
+        <frame spriteID="InvisibilityPotion" time="100"/>
+    </animation>
+
+    <animation ID="LARGE_HEART" defaultTime="100">
+        <frame spriteID="LargeHeart" time="100"/>
+    </animation>
+
+    <animation ID="MAGIC_CRYSTAL" defaultTime="100">
+        <frame spriteID="MagicCrystal_1" time="100"/>
+        <frame spriteID="MagicCrystal_2" time="100"/>
+    </animation>
+
+    <animation ID="MONEY_BAG_RED" defaultTime="100">
+        <frame spriteID="MoneyBag_Red" time="100"/>
+    </animation>
+
+    <animation ID="MONEY_BAG_WHITE" defaultTime="100">
+        <frame spriteID="MoneyBag_White" time="100"/>
+    </animation>
+
+    <animation ID="MONEY_BAG_BLUE" defaultTime="100">
+        <frame spriteID="MoneyBag_Blue" time="100"/>
+    </animation>
+
+    <animation ID="PORK_CHOP" defaultTime="100">
+        <frame spriteID="PorkChop" time="100"/>
+    </animation>
+
+    <animation ID="SMALL_HEART" defaultTime="100">
+        <frame spriteID="SmallHeart" time="100"/>
+    </animation>
+
+    <animation ID="STOP_WATCH" defaultTime="100">
+        <frame spriteID="StopWatch" time="100"/>
+    </animation>
+
+    <animation ID="TRIPLE_SHOT" defaultTime="100">
+        <frame spriteID="TripleShot" time="100"/>
+    </animation>
+</animations>

@@ -1,0 +1,9 @@
+<animations name="break_wall">
+    <animation ID="BREAK" defaultTime="100">
+        <frame spriteID="wall_break" time="100"/>
+    </animation> 
+
+     <animation ID="WALL_PIECE" defaultTime="100">
+        <frame spriteID="wall_piece" time="100"/>
+    </animation> 
+</animations>

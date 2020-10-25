@@ -1,0 +1,6 @@
+<animations name="zombie">
+    <animation ID="ZOMBIE_ACTIVE" defaultTime="150">
+        <frame spriteID="zombie_1" time="150"/>
+        <frame spriteID="zombie_2" time="150"/>
+    </animation>
+</animations>

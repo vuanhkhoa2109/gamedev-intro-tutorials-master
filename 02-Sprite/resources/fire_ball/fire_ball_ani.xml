@@ -1,0 +1,5 @@
+<animations name="fire_ball">
+    <animation ID="FIREBALL" defaultTime="100">
+        <frame spriteID="fire_ball" time="100"/>
+    </animation>
+</animations>

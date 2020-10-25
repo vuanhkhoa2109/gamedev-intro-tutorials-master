@@ -1,0 +1,9 @@
+<animations name="ground">
+    <animation ID="GROUND_1" defaultTime="100">
+        <frame spriteID="ground_1" time="100"/>
+    </animation>
+
+    <animation ID="GROUND_2" defaultTime="100">
+        <frame spriteID="ground_2" time="100"/>
+    </animation>
+</animations>

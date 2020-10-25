@@ -1,0 +1,15 @@
+<scenes name="castlevania">
+    <scene sceneID="0">
+        <mapLimit min_col="0" max_col="48"/>
+    </scene>
+
+    <scene sceneID="1">
+        <mapLimit min_col="0" max_col="96"/>
+        <mapLimit min_col="96" max_col="128"/>
+        <mapLimit min_col="128" max_col="176"/>
+    </scene>
+
+    <scene sceneID="2">
+        <mapLimit min_col="0" max_col="32"/>
+    </scene>
+</scenes>

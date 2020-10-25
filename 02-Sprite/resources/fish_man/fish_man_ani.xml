@@ -1,0 +1,14 @@
+<animations name="fish_man">
+    <animation ID="FISHMAN_ACTIVE" defaultTime="200">
+        <frame spriteID="fish_man_2" time="200"/>
+        <frame spriteID="fish_man_3" time="200"/>
+    </animation>
+
+    <animation ID="FISHMAN_HIT" defaultTime="1000">
+        <frame spriteID="fish_man_1" time="1000"/>
+    </animation>
+
+    <animation ID="FISHMAN_JUMP" defaultTime="100">
+        <frame spriteID="fish_man_3" time="100"/>
+    </animation>
+</animations>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:49c5e536439b8a6ccd9816017f0ad38e:ae3b991008a1082ffbdc835ec0161955:32a274347837c2c2a251dbd69610f480$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="Items" width="32" height="502">
+    <sprite n="Axe" x="0" y="0" w="30" h="28"/>
+    <sprite n="Boomerang" x="0" y="28" w="30" h="28"/>
+    <sprite n="Chain" x="0" y="56" w="32" h="32"/>
+    <sprite n="Cross" x="0" y="88" w="32" h="32"/>
+    <sprite n="Dagger" x="0" y="120" w="32" h="18"/>
+    <sprite n="DoubleShot" x="0" y="138" w="28" h="28"/>
+    <sprite n="HolyWater" x="0" y="166" w="28" h="28"/>
+    <sprite n="MagicCrystal_1" x="0" y="194" w="28" h="32"/>
+    <sprite n="MagicCrystal_2" x="0" y="226" w="28" h="32"/>
+    <sprite n="InvisibilityPotion" x="0" y="258" w="29" h="36"/>
+    <sprite n="LargeHeart" x="0" y="294" w="24" h="20"/>
+    <sprite n="MoneyBag_Red" x="0" y="314" w="30" h="30"/>
+    <sprite n="MoneyBag_White" x="0" y="344" w="30" h="30"/>
+    <sprite n="MoneyBag_Blue" x="0" y="374" w="30" h="30"/>
+    <sprite n="PorkChop" x="0" y="404" w="32" h="26"/>
+    <sprite n="SmallHeart" x="0" y="430" w="16" h="16"/>
+    <sprite n="StopWatch" x="0" y="446" w="26" h="28"/>
+    <sprite n="TripleShot" x="0" y="474" w="28" h="28"/>
+</TextureAtlas>

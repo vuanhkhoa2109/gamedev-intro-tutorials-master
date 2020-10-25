@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:d5e749de89c00fe785ed55b4ff6c5897:acd956fd16a379e7cbc017946018ac94:91e51333c99e7367fd34b842dd254a45$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="items.png" width="122" height="150">
+    <sprite n="Axe" x="82" y="26" w="30" h="28"/>
+    <sprite n="Boomerang" x="0" y="54" w="30" h="28"/>
+    <sprite n="Chain" x="90" y="82" w="32" h="32"/>
+    <sprite n="Cross" x="56" y="114" w="32" h="32"/>
+    <sprite n="Dagger" x="16" y="0" w="32" h="18"/>
+    <sprite n="DoubleShot" x="30" y="54" w="28" h="28"/>
+    <sprite n="HolyWater" x="26" y="26" w="28" h="28"/>
+    <sprite n="InvisibilityPotion" x="88" y="114" w="29" h="36"/>
+    <sprite n="LargeHeart" x="48" y="0" w="24" h="20"/>
+    <sprite n="MagicCrystal" x="0" y="114" w="56" h="32"/>
+    <sprite n="MoneyBag" x="0" y="82" w="90" h="30"/>
+    <sprite n="PorkChop" x="72" y="0" w="32" h="26"/>
+    <sprite n="SmallHeart" x="0" y="0" w="16" h="16"/>
+    <sprite n="StopWatch" x="0" y="26" w="26" h="28"/>
+    <sprite n="TripleShot" x="54" y="26" w="28" h="28"/>
+</TextureAtlas>

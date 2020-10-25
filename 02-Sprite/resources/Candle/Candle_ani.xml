@@ -1,0 +1,11 @@
+<animations name="Candle">
+    <animation ID="LARGE_CANDLE" defaultTime="100">
+        <frame spriteID="large_candle_1" time="100"/>
+        <frame spriteID="large_candle_2" time="100"/>
+    </animation>
+
+     <animation ID="CANDLE" defaultTime="100">
+        <frame spriteID="candle_1" time="100"/>
+        <frame spriteID="candle_2" time="100"/>
+    </animation>
+</animations>
