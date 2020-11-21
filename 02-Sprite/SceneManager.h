@@ -6,8 +6,8 @@
 #include "Grid.h"
 #include "Simon.h"
 
-//#include "Candle.h"
-//#include "Ground.h"
+#include "Candle.h"
+#include "Ground.h"
 //#include "Simon.h"
 //#include "Weapon.h"
 //#include "Items.h"
@@ -42,8 +42,8 @@ class SceneManager
 	vector<LPGAMEOBJECT> listStairs;
 
 	Simon* simon;
-	//Candle* candle;
-	//Ground* ground;
+	Candle* candle;
+	Ground* ground;
 	//Items* item;
 	//Weapon* weapon;
 	//SubWeapon* subweapon;

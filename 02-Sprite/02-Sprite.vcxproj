@@ -122,10 +122,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Candle.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Ground.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="LoadResource.cpp" />
     <ClCompile Include="main.cpp" />
@@ -138,11 +140,13 @@
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Candle.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="Ground.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="LoadResource.h" />
     <ClInclude Include="SceneManager.h" />

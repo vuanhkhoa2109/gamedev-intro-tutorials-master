@@ -59,9 +59,9 @@ void SceneManager::LoadResources()
 
 	simon = new Simon();
 
-	/*candle = new Candle();
-
 	candle = new Candle();
+
+	/*candle = new Candle();
 
 	item = new Items();
 
@@ -111,7 +111,23 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 	while (!fs.eof())
 	{
 		fs >> ID_Obj >> pos_x >> pos_y >> state >> isEnable >> nameItem >> typeStair;
-
+		if (ID_Obj == CANDLE)
+		{
+			candle = new Candle();
+			candle->SetPosition(pos_x, pos_y);
+			candle->SetState(state);
+			candle->isEnable = isEnable;
+			candle->SetIdItem(nameItem);
+			grid->Add(candle);
+		}
+		else if (ID_Obj == GROUND)
+		{
+			ground = new Ground();
+			ground->SetPosition(pos_x, pos_y);
+			ground->SetState(state);
+			ground->isEnable = isEnable;
+			grid->Add(ground);
+		}
 		/*if (ID_Obj == CANDLE)
 		{
 			candle = new Candle();
@@ -239,7 +255,8 @@ void SceneManager::GetObjectFromGrid()
 	{
 		LPGAMEOBJECT obj = listUnits[i];
 		listObjects.push_back(obj);
-
+		if (dynamic_cast<Ground*>(obj))
+			continue;
 		/*if (dynamic_cast<Ground*>(obj))
 			continue;
 		else if (dynamic_cast<Stair*>(obj))
