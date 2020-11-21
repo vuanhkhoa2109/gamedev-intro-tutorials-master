@@ -9,18 +9,11 @@ SceneManager::SceneManager(Game* game)
 
 	// INIT
 	simon = new Simon();
-	/*boss = new Boss();
-
-	for (int i = 1; i <= 3; i++)
-	{
-		subweapon = new SubWeapon();
-		subweapon->SetEnable(false);
-		subweaponList.push_back(subweapon);
-	}*/
 }
 
 SceneManager::~SceneManager()
 {
+
 }
 
 void SceneManager::Init(int idScene)
@@ -121,6 +114,14 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			grid->Add(candle);
 		}
 		else if (ID_Obj == GROUND)
+		{
+			ground = new Ground();
+			ground->SetPosition(pos_x, pos_y);
+			ground->SetState(state);
+			ground->isEnable = isEnable;
+			grid->Add(ground);
+		}
+		if (ID_Obj == GROUND)
 		{
 			ground = new Ground();
 			ground->SetPosition(pos_x, pos_y);
@@ -255,6 +256,8 @@ void SceneManager::GetObjectFromGrid()
 	{
 		LPGAMEOBJECT obj = listUnits[i];
 		listObjects.push_back(obj);
+		if (dynamic_cast<Ground*>(obj))
+			continue;
 		if (dynamic_cast<Ground*>(obj))
 			continue;
 		/*if (dynamic_cast<Ground*>(obj))
@@ -856,6 +859,8 @@ void SceneManager::Simon_Update(DWORD dt)
 
 	for (auto obj : listObjects)
 	{
+		if (dynamic_cast<Ground*>(obj))
+				coObjects.push_back(obj);
 		//if (dynamic_cast<Door*>(obj) || dynamic_cast<Ground*>(obj) ||
 		//	dynamic_cast<ChangeSceneObject*>(obj) || dynamic_cast<Water*>(obj) || dynamic_cast<Candle*>(obj))
 		//	coObjects.push_back(obj);

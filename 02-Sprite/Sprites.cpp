@@ -47,7 +47,6 @@ LPSPRITE Sprites::Get(string idSprite)
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Animation::Add(string spriteId, DWORD time)
 {
 	int t = time;
@@ -119,7 +118,6 @@ void Animation::Render(float x, float y, int alpha)
 	frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Animations* Animations::__instance = NULL;
 
 Animations* Animations::GetInstance()

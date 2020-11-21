@@ -3,6 +3,7 @@
 
 #include "Simon.h"
 #include "Game.h"
+#include "Ground.h"
 
 
 Simon::Simon() : GameObject() {
@@ -80,7 +81,35 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
-			
+			LPCOLLISIONEVENT e = coEventsResult[i];
+
+			if (dynamic_cast<Ground*>(e->obj))
+			{
+				if (e->ny != 0)
+				{
+					// BUG: 
+					// Simon deflect ngay l?p t?c va ch?m v?i ground (?ôi lúc) -> không b?t nh?y ???c.
+					if (e->ny == CDIR_BOTTOM && (state != DEFLECT || (state == DEFLECT && vy > 0)))
+					{
+						isCollisionWithStair = false;
+						vy = 0;
+						isTouchGround = true;
+						isFalling = false;
+
+						if (HP == 0)
+						{
+							SetState(DEAD);
+							return;
+						}
+					}
+					else
+						y += dy;
+				}
+
+				// Khi ?ang lên/xu?ng c?u thang, va ch?m theo tr?c x s? không ???c xét t?i
+				if (state == STAIR_UP || state == STAIR_DOWN)
+					if (nx != 0) x -= nx * 0.1f;
+			}
 
 		}
 	}
