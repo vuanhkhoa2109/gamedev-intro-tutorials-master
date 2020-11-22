@@ -4,7 +4,7 @@
 class Weapon :
 	public GameObject
 {
-	vector<vector<float>> sparkCoord; // vector l?u to? ?? ?? render spark khi subweapon trúng m?c tiêu
+	vector<vector<float>> sparkCoord;
 	Animation* spark = Animations::GetInstance()->Get("spark");
 	int startTimeRenderSpark = 0;
 public:
@@ -14,7 +14,7 @@ public:
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Render();
 	void RenderSpark();
-	void GetCoordinateObject(LPGAMEOBJECT obj);			// L?y to? ?? c?a object ?? l?u vào sparkC
+	void GetCoordinateObject(LPGAMEOBJECT obj);
 
 	void SetWeaponPosition(D3DXVECTOR3 simonPositon, bool sitting);
 };

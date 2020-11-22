@@ -1,5 +1,6 @@
 #include "weapon.h"
 #include "LoadResource.h"
+#include "Candle.h"
 
 
 Weapon::Weapon()
@@ -22,7 +23,7 @@ void Weapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coObjects->size(); i++)
 		{
 			LPGAMEOBJECT obj = coObjects->at(i);
-			/*if (dynamic_cast<Candle*>(obj))
+			if (dynamic_cast<Candle*>(obj))
 			{
 				Candle* e = dynamic_cast<Candle*> (obj);
 
@@ -32,6 +33,7 @@ void Weapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					e->isLastFame = false;
 				}
 			}
+			/*
 
 			else if (dynamic_cast<Zombie*>(obj))
 			{

@@ -4,6 +4,8 @@
 #include "LoadResource.h"
 #include "Const.h"
 #include "Timer.h"
+#include "Items.h"
+#include "Candle.h"
 
 class Simon : public GameObject
 {
