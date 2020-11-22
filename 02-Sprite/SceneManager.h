@@ -8,9 +8,8 @@
 
 #include "Candle.h"
 #include "Ground.h"
-//#include "Simon.h"
-//#include "Weapon.h"
-//#include "Items.h"
+#include "Weapon.h"
+#include "Items.h"
 //#include "SubWeapon.h"
 //#include "Stair.h"
 //#include "Door.h"
@@ -20,7 +19,6 @@
 //#include "FireBall.h"
 //#include "FishMan.h"
 //#include "Bubbles.h"
-//#include "Grid.h"
 //#include "Boss.h"
 //#include "Water.h"
 //#include "Timer.h"
@@ -44,8 +42,8 @@ class SceneManager
 	Simon* simon;
 	Candle* candle;
 	Ground* ground;
-	//Items* item;
-	//Weapon* weapon;
+	Items* item;
+	Weapon* weapon;
 	//SubWeapon* subweapon;
 	//Stair* stair;
 	//Door* door;

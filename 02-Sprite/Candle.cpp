@@ -18,7 +18,7 @@ Candle::Candle()
 
 void Candle::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (state == CANDLE_DESTROYED && isLastFame) 	//n?u render xong h?t ??m l?a r?i thì set enable = false -> bi?n m?t
+	if (state == CANDLE_DESTROYED && isLastFame) 
 	{
 		this->isEnable = false;
 	}

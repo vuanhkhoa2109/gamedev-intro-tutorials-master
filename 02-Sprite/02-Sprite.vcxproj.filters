@@ -72,6 +72,9 @@
     <ClCompile Include="Ground.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Items.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -120,6 +123,9 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Items.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -53,10 +53,9 @@ void SceneManager::LoadResources()
 	simon = new Simon();
 
 	candle = new Candle();
+	item = new Items();
 
 	/*candle = new Candle();
-
-	item = new Items();
 
 	weapon = new Weapon();
 
@@ -114,14 +113,6 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			grid->Add(candle);
 		}
 		else if (ID_Obj == GROUND)
-		{
-			ground = new Ground();
-			ground->SetPosition(pos_x, pos_y);
-			ground->SetState(state);
-			ground->isEnable = isEnable;
-			grid->Add(ground);
-		}
-		if (ID_Obj == GROUND)
 		{
 			ground = new Ground();
 			ground->SetPosition(pos_x, pos_y);
@@ -258,18 +249,9 @@ void SceneManager::GetObjectFromGrid()
 		listObjects.push_back(obj);
 		if (dynamic_cast<Ground*>(obj))
 			continue;
-		if (dynamic_cast<Ground*>(obj))
-			continue;
-		/*if (dynamic_cast<Ground*>(obj))
-			continue;
-		else if (dynamic_cast<Stair*>(obj))
-			listStairs.push_back(obj);
-		else if (dynamic_cast<Door*>(obj))
-			listDoors.push_back(obj);
-		else if (dynamic_cast<Candle*>(obj) ||
-			dynamic_cast<Water*>(obj) || dynamic_cast<BreakWall*>(obj))
+		else if (dynamic_cast<Candle*>(obj))
 			listStaticObjectsToRender.push_back(obj);
-		else*/
+		else
 			listMovingObjectsToRender.push_back(obj);
 	}
 }
@@ -315,8 +297,9 @@ void SceneManager::Update(DWORD dt)
 	{
 		LPGAMEOBJECT object = listObjects[i];
 
-		/*if (dynamic_cast<Items*>(object))
+		if (dynamic_cast<Items*>(object))
 			Item_Update(dt, object);
+		/*
 		else if (dynamic_cast<Zombie*>(object))
 			Zombie_Update(dt, object);
 		else if (dynamic_cast<BlackLeopard*>(object))
@@ -386,18 +369,18 @@ void SceneManager::Render()
 	for (auto obj : listStaticObjectsToRender)
 	{
 		obj->Render();
-		//obj->RenderBoundingBox();
+		obj->RenderBoundingBox();
 	}
 
 	for (auto obj : listMovingObjectsToRender)
 	{
 		obj->Render();
-		//obj->RenderBoundingBox();
+		obj->RenderBoundingBox();
 		//obj->RenderActiveBoundingBox();
 	}
 
 	simon->Render();
-	//simon->RenderBoundingBox();
+	simon->RenderBoundingBox();
 
 	//for (int i = 0; i < 3; i++)
 	//{
@@ -559,6 +542,12 @@ void SceneManager::SetDropItems()
 		if (object->IsDroppedItem() == true)
 			continue;
 
+		if (dynamic_cast<Candle*>(object) && object->GetState() == CANDLE_DESTROYED)
+		{
+			idItem = object->nameItem;
+			object->GetPosition(x, y);
+			object->SetIsDroppedItem(true);
+		}
 		/*if (dynamic_cast<Candle*>(object) && object->GetState() == CANDLE_DESTROYED)
 		{
 			idItem = object->nameItem;
@@ -592,17 +581,15 @@ void SceneManager::SetDropItems()
 			object->SetIsDroppedItem(true);
 		}*/
 
-		//if (idItem != "")
-		//{
-		//	// T?o m?t item theo id
-
-		//	auto item = new Items();
-		//	item->SetEnable(true);
-		//	item->SetPosition(x, y);
-		//	item->SetState(idItem);
-		//	grid->Add(item);
-		//	listItems.push_back(item);
-		//}
+		if (idItem != "")
+		{
+			auto item = new Items();
+			item->SetEnable(true);
+			item->SetPosition(x, y);
+			item->SetState(idItem);
+			grid->Add(item);
+			listItems.push_back(item);
+		}
 	}
 }
 
@@ -859,7 +846,7 @@ void SceneManager::Simon_Update(DWORD dt)
 
 	for (auto obj : listObjects)
 	{
-		if (dynamic_cast<Ground*>(obj))
+		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj))
 				coObjects.push_back(obj);
 		//if (dynamic_cast<Door*>(obj) || dynamic_cast<Ground*>(obj) ||
 		//	dynamic_cast<ChangeSceneObject*>(obj) || dynamic_cast<Water*>(obj) || dynamic_cast<Candle*>(obj))
@@ -928,8 +915,8 @@ void SceneManager::Item_Update(DWORD dt, LPGAMEOBJECT& item)
 
 		for (auto obj : listObjects)
 		{
-			/*if (dynamic_cast<Ground*>(obj) || (dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL))
-				coObjects.push_back(obj);*/
+			if (dynamic_cast<Ground*>(obj))
+				coObjects.push_back(obj);
 		}
 
 		item->Update(dt, &coObjects);

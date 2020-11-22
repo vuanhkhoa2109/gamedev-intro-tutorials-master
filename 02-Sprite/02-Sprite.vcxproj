@@ -128,6 +128,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="Items.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="LoadResource.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="LoadResource.h" />
     <ClInclude Include="SceneManager.h" />
