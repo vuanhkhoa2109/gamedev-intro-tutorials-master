@@ -542,7 +542,7 @@ void SceneManager::SetDropItems()
 		if (object->IsDroppedItem() == true)
 			continue;
 
-		if (dynamic_cast<Candle*>(object) && object->GetState() == CANDLE_DESTROYED)
+		if (dynamic_cast<Candle*>(object) && object->GetState() == CANDLE_DESTROYED && object->isLastFame)
 		{
 			idItem = object->nameItem;
 			object->GetPosition(x, y);
