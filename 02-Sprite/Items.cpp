@@ -42,35 +42,44 @@ void Items::Update(DWORD dt, vector<LPGAMEOBJECT>* coObject)
 			velocityVariation_x *= -1; // ??i chi?u
 	}
 
-	// Check collision between item and ground (falling on ground)
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
-
-	coEvents.clear();
-
-	CalcPotentialCollisions(coObject, coEvents);
-
-	if (coEvents.size() == 0)
-	{
-		x += dx;
-		y += dy;
+	if (state == MONEY_BAG_FLASHING) {
+		if (y > 334) {
+			y -= 0.5f;
+		}		
 	}
 	else
 	{
-		float min_tx, min_ty, nx = 0, ny;
+		// Check collision between item and ground (falling on ground)
+		vector<LPCOLLISIONEVENT> coEvents;
+		vector<LPCOLLISIONEVENT> coEventsResult;
 
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+		coEvents.clear();
 
-		y += min_ty * dy + ny * 0.1f;
-		if (ny != 0)
+		CalcPotentialCollisions(coObject, coEvents);
+
+		if (coEvents.size() == 0)
 		{
-			vx = 0;
-			vy = 0;
+			x += dx;
+			y += dy;
 		}
-	}
+		else
+		{
+			float min_tx, min_ty, nx = 0, ny;
 
-	// clean up collision events
-	for (int i = 0; i < coEvents.size(); i++) delete coEvents[i];
+			FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+			y += min_ty * dy + ny * 0.1f;
+			if (ny != 0)
+			{
+				vx = 0;
+				vy = 0;
+			}
+		}
+
+		// clean up collision events
+		for (int i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	}
+	
 }
 
 void Items::Render()

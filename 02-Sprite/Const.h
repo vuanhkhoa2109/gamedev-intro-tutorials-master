@@ -118,6 +118,10 @@ const string CANDLE = "CANDLE";
 const string GROUND_1 = "GROUND_1";
 const string GROUND_2 = "GROUND_2";
 
+// Hidden Object
+const string TOUCHED = "TOUCHED";
+const string NEVER_TOUCH = "NEVER_TOUCH";
+
 // Items
 const string STOP_WATCH = "STOP_WATCH";
 const string DAGGER = "DAGGER";
@@ -412,6 +416,8 @@ constexpr float WALLPIECES_TIME = 2000;
 #pragma region ID objects to load from file
 
 const string GROUND = "GROUND";
+const string HIDDEN = "HIDDEN";
+const string HIDDENMONEY = "HIDDENMONEY";
 const string STAIR = "STAIR";
 const string DOOR = "DOOR";
 const string ZOMBIE = "ZOMBIE";

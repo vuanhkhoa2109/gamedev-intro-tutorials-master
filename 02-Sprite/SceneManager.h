@@ -10,6 +10,7 @@
 #include "Ground.h"
 #include "Weapon.h"
 #include "Items.h"
+#include "HiddenObject.h"
 //#include "SubWeapon.h"
 //#include "Stair.h"
 //#include "Door.h"
@@ -24,6 +25,7 @@
 //#include "Timer.h"
 
 #include <map>
+#include "MoneyBagFlashing.h"
 
 using namespace std;
 
@@ -44,6 +46,8 @@ class SceneManager
 	Ground* ground;
 	Items* item;
 	Weapon* weapon;
+	HiddenObject* hiddenObject;
+	MoneyBagFlashing* moneyBag;
 	//SubWeapon* subweapon;
 	//Stair* stair;
 	//Door* door;
