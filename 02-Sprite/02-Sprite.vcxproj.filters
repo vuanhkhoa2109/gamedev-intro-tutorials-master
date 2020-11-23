@@ -75,6 +75,15 @@
     <ClCompile Include="Items.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="HiddenObject.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="GetHiddenMoneyObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBagFlashing.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -126,6 +135,15 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Items.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenObject.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="GetHiddenMoneyObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyBagFlashing.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

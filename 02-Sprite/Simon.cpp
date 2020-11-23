@@ -4,6 +4,7 @@
 #include "Simon.h"
 #include "Game.h"
 #include "Ground.h"
+#include "GetHiddenMoneyObject.h"
 
 
 Simon::Simon() : GameObject() {
@@ -110,11 +111,20 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (state == STAIR_UP || state == STAIR_DOWN)
 					if (nx != 0) x -= nx * 0.1f;
 			}
-			else if (dynamic_cast<Candle*>(e->obj) ||
-				dynamic_cast<Items*>(e->obj))
+			else if (dynamic_cast<Candle*>(e->obj) || dynamic_cast<Items*>(e->obj))
 			{
 				if (e->nx != 0) x += dx;
 				if (e->ny != 0) y += dy;
+			}
+			else if (dynamic_cast<GetHiddenMoneyObject*>(e->obj)) {
+				if (e->nx != 0) x += dx;
+				if (e->ny != 0) y += dy;
+
+				if (this->AABBx(e->obj) == true)
+				{
+					e->obj->SetState(TOUCHED);
+					e->obj->isLastFame = false;
+				}
 			}
 
 		}

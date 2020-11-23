@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "debug.h"
+#include "GetHiddenMoneyObject.h"
 
 
 SceneManager::SceneManager(Game* game)
@@ -119,6 +120,22 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			ground->SetState(state);
 			ground->isEnable = isEnable;
 			grid->Add(ground);
+		}
+		else if (ID_Obj == HIDDEN)
+		{
+			hiddenObject = new GetHiddenMoneyObject();
+			hiddenObject->SetSize(30, 30);
+			hiddenObject->SetPosition(pos_x, pos_y);
+			hiddenObject->SetState(state);
+			hiddenObject->isEnable = isEnable;
+			grid->Add(hiddenObject);
+		}
+		else if (ID_Obj == HIDDENMONEY) {
+			item = new Items();
+			item->SetState(state);
+			item->SetPosition(pos_x, pos_y);
+			item->isEnable = isEnable;
+			grid->Add(item);
 		}
 		/*if (ID_Obj == CANDLE)
 		{
@@ -249,7 +266,7 @@ void SceneManager::GetObjectFromGrid()
 		listObjects.push_back(obj);
 		if (dynamic_cast<Ground*>(obj))
 			continue;
-		else if (dynamic_cast<Candle*>(obj))
+		else if (dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
 			listStaticObjectsToRender.push_back(obj);
 		else
 			listMovingObjectsToRender.push_back(obj);
@@ -846,7 +863,7 @@ void SceneManager::Simon_Update(DWORD dt)
 
 	for (auto obj : listObjects)
 	{
-		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj))
+		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
 				coObjects.push_back(obj);
 		//if (dynamic_cast<Door*>(obj) || dynamic_cast<Ground*>(obj) ||
 		//	dynamic_cast<ChangeSceneObject*>(obj) || dynamic_cast<Water*>(obj) || dynamic_cast<Candle*>(obj))
