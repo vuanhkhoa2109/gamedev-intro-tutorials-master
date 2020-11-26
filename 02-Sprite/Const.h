@@ -240,7 +240,7 @@ constexpr float SIMON_DEFLECT_SPEED_Y = 0.3f;
 
 // Item
 constexpr float ITEM_FALLING_SPEED_X = 0.12f;
-constexpr float ITEM_FALLING_SPEED_X_VARIATION = 0.01f;
+constexpr float ITEM_FALLING_SPEED_X_VARIATION = 0.014f;
 constexpr float ITEM_SMALLHEART_FALLING_SPEED_Y = 0.1f;
 constexpr float ITEM_FALLING_SPEED_Y = 0.12f;
 constexpr float ITEM_FALLING_SPEED = 0.1f;

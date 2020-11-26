@@ -84,6 +84,12 @@
     <ClCompile Include="MoneyBagFlashing.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -144,6 +150,12 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="MoneyBagFlashing.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

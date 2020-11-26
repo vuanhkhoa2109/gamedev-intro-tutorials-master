@@ -55,6 +55,7 @@ void SceneManager::LoadResources()
 
 	candle = new Candle();
 	item = new Items();
+	zombie = new Zombie();
 
 	/*candle = new Candle();
 
@@ -130,6 +131,15 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			hiddenObject->isEnable = isEnable;
 			hiddenObject->SetIdItem(nameItem);
 			grid->Add(hiddenObject);
+		}
+		else if (ID_Obj == ZOMBIE)
+		{
+			zombie = new Zombie();
+			zombie->SetPosition(pos_x, pos_y);
+			zombie->SetEntryPosition(pos_x, pos_y);
+			zombie->SetState(state);
+			zombie->SetEnable(isEnable);
+			grid->Add(zombie);
 		}
 		/*if (ID_Obj == CANDLE)
 		{
@@ -310,6 +320,8 @@ void SceneManager::Update(DWORD dt)
 
 		if (dynamic_cast<Items*>(object))
 			Item_Update(dt, object);
+		else if (dynamic_cast<Zombie*>(object))
+			Zombie_Update(dt, object);
 		/*
 		else if (dynamic_cast<Zombie*>(object))
 			Zombie_Update(dt, object);
@@ -320,8 +332,8 @@ void SceneManager::Update(DWORD dt)
 		else if (dynamic_cast<FishMan*>(object))
 			FishMan_Update(dt, object);
 		else if (dynamic_cast<Boss*>(object))
-			Boss_Update(dt, object);
-		else*/
+			Boss_Update(dt, object);*/
+		else
 			object->Update(dt, &listObjects);
 	}
 
@@ -565,6 +577,14 @@ void SceneManager::SetDropItems()
 			object->GetPosition(x,y);
 			object->SetIsDroppedItem(true);
 		}
+		else if (dynamic_cast<Zombie*>(object) && object->GetState() == ZOMBIE_DESTROYED)/* ||
+			(dynamic_cast<VampireBat*>(object) && object->GetState() == VAMPIRE_BAT_DESTROYED) ||
+			(dynamic_cast<FishMan*>(object) && object->GetState() == FISHMAN_DESTROYED))*/
+		{
+			idItem = GetRandomItem();
+			object->GetPosition(x, y);
+			object->SetIsDroppedItem(true);
+		}
 		/*if (dynamic_cast<Candle*>(object) && object->GetState() == CANDLE_DESTROYED)
 		{
 			idItem = object->nameItem;
@@ -627,12 +647,12 @@ void SceneManager::SetInactivationByPosition()
 	{
 		if (IsInViewport(object) == false)
 		{
-			/*if (dynamic_cast<Zombie*>(object) && object->GetState() == ZOMBIE_ACTIVE)
+			if (dynamic_cast<Zombie*>(object) && object->GetState() == ZOMBIE_ACTIVE)
 			{
 				auto zombie = dynamic_cast<Zombie*>(object);
 				zombie->SetState(ZOMBIE_INACTIVE);
 			}
-			else if (dynamic_cast<BlackLeopard*>(object) && object->GetState() == BLACK_LEOPARD_ACTIVE)
+			/*else if (dynamic_cast<BlackLeopard*>(object) && object->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
 				auto leopard = dynamic_cast<BlackLeopard*>(object);
 				leopard->SetState(BLACK_LEOPARD_INACTIVE);
@@ -804,11 +824,12 @@ void SceneManager::CrossEffect()
 			if (IsInViewport(listObjects[i]) == false)
 				continue;
 
-			/*if (dynamic_cast<Zombie*>(listObjects[i]) && listObjects[i]->GetState() == ZOMBIE_ACTIVE)
+			if (dynamic_cast<Zombie*>(listObjects[i]) && listObjects[i]->GetState() == ZOMBIE_ACTIVE)
 			{
 				auto zombie = dynamic_cast<Zombie*>(listObjects[i]);
 				zombie->SetState(ZOMBIE_DESTROYED);
 			}
+			/*
 			else if (dynamic_cast<BlackLeopard*>(listObjects[i]) && listObjects[i]->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
 				auto leopard = dynamic_cast<BlackLeopard*>(listObjects[i]);
@@ -864,6 +885,11 @@ void SceneManager::Simon_Update(DWORD dt)
 	for (auto obj : listObjects)
 	{
 		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
+				coObjects.push_back(obj);
+			else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE /*||
+				dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE ||
+				dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE ||
+				dynamic_cast<Boss*>(obj) && obj->GetState() == BOSS_ACTIVE*/)
 				coObjects.push_back(obj);
 		//if (dynamic_cast<Door*>(obj) || dynamic_cast<Ground*>(obj) ||
 		//	dynamic_cast<ChangeSceneObject*>(obj) || dynamic_cast<Water*>(obj) || dynamic_cast<Candle*>(obj))
@@ -940,53 +966,53 @@ void SceneManager::Item_Update(DWORD dt, LPGAMEOBJECT& item)
 	}
 }
 
-//void SceneManager::Zombie_Update(DWORD dt, LPGAMEOBJECT& object)
-//{
-//	if (crossEffectTimer->IsTimeUp() == true && object->GetState() != ZOMBIE_INACTIVE)
-//	{
-//		auto zombie = dynamic_cast<Zombie*>(object);
-//
-//		if (zombie->isSettedPosition == false)
-//		{
-//			zombie->isSettedPosition = true;
-//
-//			float simon_x, simon_y;
-//			simon->GetPosition(simon_x, simon_y);
-//
-//			int nx = zombie->GetEntryPosition().x < simon_x ? 1 : -1;
-//			zombie->SetN(nx);
-//
-//			// C?n random m?t kho?ng nh? ?? tránh vi?c các zombie spawn cùng lúc, t?i cùng m?t v? trí
-//			int randomDistance = rand() % 20;
-//
-//			float x, y;
-//			y = zombie->GetEntryPosition().y;
-//			if (nx == -1)
-//				x = game->GetCamPos().x + SCREEN_WIDTH - (ENEMY_DEFAULT_BBOX_WIDTH + randomDistance);
-//			else
-//				x = game->GetCamPos().x + (ENEMY_DEFAULT_BBOX_WIDTH + randomDistance);
-//
-//			zombie->SetPosition(x, y);
-//			zombie->SetState(ZOMBIE_ACTIVE);
-//		}
-//
-//		vector<LPGAMEOBJECT> coObjects;
-//
-//		for (auto obj : listObjects)
-//		{
-//			if (dynamic_cast<Ground*>(obj) || (dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL))
-//				coObjects.push_back(obj);
-//		}
-//
-//		object->SetStopMovement(stopWatchMoment);
-//		object->Update(dt, &coObjects);
-//	}
-//
-//}
-//
+void SceneManager::Zombie_Update(DWORD dt, LPGAMEOBJECT& object)
+{
+	if (crossEffectTimer->IsTimeUp() == true && object->GetState() != ZOMBIE_INACTIVE)
+	{
+		auto zombie = dynamic_cast<Zombie*>(object);
+
+		if (zombie->isSettedPosition == false)
+		{
+			zombie->isSettedPosition = true;
+
+			float simon_x, simon_y;
+			simon->GetPosition(simon_x, simon_y);
+
+			int nx = zombie->GetEntryPosition().x < simon_x ? 1 : -1;
+			zombie->SetN(nx);
+
+			// C?n random m?t kho?ng nh? ?? tránh vi?c các zombie spawn cùng lúc, t?i cùng m?t v? trí
+			int randomDistance = rand() % 20;
+
+			float x, y;
+			y = zombie->GetEntryPosition().y;
+			if (nx == -1)
+				x = game->GetCamPos().x + SCREEN_WIDTH - (ENEMY_DEFAULT_BBOX_WIDTH + randomDistance);
+			else
+				x = game->GetCamPos().x + (ENEMY_DEFAULT_BBOX_WIDTH + randomDistance);
+
+			zombie->SetPosition(x, y);
+			zombie->SetState(ZOMBIE_ACTIVE);
+		}
+
+		vector<LPGAMEOBJECT> coObjects;
+
+		for (auto obj : listObjects)
+		{
+			if (dynamic_cast<Ground*>(obj)/* || (dynamic_cast<BreakWall*>(obj)*/ && obj->GetState() == NORMAL)
+				coObjects.push_back(obj);
+		}
+
+		object->SetStopMovement(stopWatchMoment);
+		object->Update(dt, &coObjects);
+	}
+
+}
+
 //void SceneManager::BlackLeopard_Update(DWORD dt, LPGAMEOBJECT& object)
 //{
-//	BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(object);
+//	//BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(object);
 //
 //	if (leopard->GetState() == BLACK_LEOPARD_INACTIVE)
 //	{
@@ -1013,7 +1039,7 @@ void SceneManager::Item_Update(DWORD dt, LPGAMEOBJECT& item)
 //		object->Update(dt, &coObjects);
 //	}
 //}
-//
+
 //void SceneManager::VampireBat_Update(DWORD dt, LPGAMEOBJECT& object)
 //{
 //	if (crossEffectTimer->IsTimeUp() == true && object->GetState() != VAMPIRE_BAT_INACTIVE)

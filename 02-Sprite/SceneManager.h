@@ -14,7 +14,7 @@
 //#include "SubWeapon.h"
 //#include "Stair.h"
 //#include "Door.h"
-//#include "Zombie.h"
+#include "Zombie.h"
 //#include "BlackLeopard.h"
 //#include "VampireBat.h"
 //#include "FireBall.h"
@@ -51,7 +51,7 @@ class SceneManager
 	//SubWeapon* subweapon;
 	//Stair* stair;
 	//Door* door;
-	//Zombie* zombie;
+	Zombie* zombie;
 	//BlackLeopard* leopard;
 	//VampireBat* bat;
 	//FishMan* fishman;

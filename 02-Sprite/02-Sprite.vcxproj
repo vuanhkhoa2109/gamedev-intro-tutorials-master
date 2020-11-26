@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="Candle.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GetHiddenMoneyObject.cpp" />
@@ -142,11 +143,13 @@
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Candle.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GetHiddenMoneyObject.h" />
@@ -164,6 +167,7 @@
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\mario.png" />

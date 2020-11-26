@@ -35,7 +35,7 @@ void Items::Update(DWORD dt, vector<LPGAMEOBJECT>* coObject)
 
 
 	GameObject::Update(dt);
-	if (state == LARGE_HEART && vy != 0)
+	if (state == SMALL_HEART && vy != 0)
 	{
 		vx += velocityVariation_x;
 		if (vx >= ITEM_FALLING_SPEED_X || vx <= -ITEM_FALLING_SPEED_X)
