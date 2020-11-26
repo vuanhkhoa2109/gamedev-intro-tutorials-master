@@ -123,7 +123,6 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (this->AABBx(e->obj) == true)
 				{
 					e->obj->SetState(TOUCHED);
-					e->obj->isLastFame = false;
 				}
 			}
 

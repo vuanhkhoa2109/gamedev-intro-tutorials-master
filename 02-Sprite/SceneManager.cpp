@@ -124,18 +124,12 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		else if (ID_Obj == HIDDEN)
 		{
 			hiddenObject = new GetHiddenMoneyObject();
-			hiddenObject->SetSize(30, 30);
+			//hiddenObject->SetSize(30, 30);
 			hiddenObject->SetPosition(pos_x, pos_y);
 			hiddenObject->SetState(state);
 			hiddenObject->isEnable = isEnable;
+			hiddenObject->SetIdItem(nameItem);
 			grid->Add(hiddenObject);
-		}
-		else if (ID_Obj == HIDDENMONEY) {
-			item = new Items();
-			item->SetState(state);
-			item->SetPosition(pos_x, pos_y);
-			item->isEnable = isEnable;
-			grid->Add(item);
 		}
 		/*if (ID_Obj == CANDLE)
 		{
@@ -563,6 +557,12 @@ void SceneManager::SetDropItems()
 		{
 			idItem = object->nameItem;
 			object->GetPosition(x, y);
+			object->SetIsDroppedItem(true);
+		}
+		if (dynamic_cast<GetHiddenMoneyObject*>(object) && object->GetState() == TOUCHED)
+		{
+			idItem = object->nameItem;
+			object->GetPosition(x,y);
 			object->SetIsDroppedItem(true);
 		}
 		/*if (dynamic_cast<Candle*>(object) && object->GetState() == CANDLE_DESTROYED)

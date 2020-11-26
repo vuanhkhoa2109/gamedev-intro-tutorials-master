@@ -10,7 +10,7 @@
 #include "Ground.h"
 #include "Weapon.h"
 #include "Items.h"
-#include "HiddenObject.h"
+#include "GetHiddenMoneyObject.h"
 //#include "SubWeapon.h"
 //#include "Stair.h"
 //#include "Door.h"
@@ -46,7 +46,7 @@ class SceneManager
 	Ground* ground;
 	Items* item;
 	Weapon* weapon;
-	HiddenObject* hiddenObject;
+	GetHiddenMoneyObject* hiddenObject;
 	MoneyBagFlashing* moneyBag;
 	//SubWeapon* subweapon;
 	//Stair* stair;

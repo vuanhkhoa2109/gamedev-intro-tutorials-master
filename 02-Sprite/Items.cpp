@@ -35,20 +35,17 @@ void Items::Update(DWORD dt, vector<LPGAMEOBJECT>* coObject)
 
 
 	GameObject::Update(dt);
-	if (state == SMALL_HEART && vy != 0)
+	if (state == LARGE_HEART && vy != 0)
 	{
 		vx += velocityVariation_x;
 		if (vx >= ITEM_FALLING_SPEED_X || vx <= -ITEM_FALLING_SPEED_X)
 			velocityVariation_x *= -1; // ??i chi?u
 	}
 
-	if (state == MONEY_BAG_FLASHING) {
-		if (y > 334) {
-			y -= 0.5f;
-		}		
+	if (state == MONEY_BAG_FLASHING && y == 304.0) {
+		y -= 0.5f;	
 	}
-	else
-	{
+	else {
 		// Check collision between item and ground (falling on ground)
 		vector<LPCOLLISIONEVENT> coEvents;
 		vector<LPCOLLISIONEVENT> coEventsResult;
@@ -78,8 +75,10 @@ void Items::Update(DWORD dt, vector<LPGAMEOBJECT>* coObject)
 
 		// clean up collision events
 		for (int i = 0; i < coEvents.size(); i++) delete coEvents[i];
+
 	}
 	
+		
 }
 
 void Items::Render()

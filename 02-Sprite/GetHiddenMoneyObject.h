@@ -1,10 +1,13 @@
 #pragma once
 #include "HiddenObject.h"
-class GetHiddenMoneyObject : public HiddenObject
+class GetHiddenMoneyObject : public GameObject
 {
 private:
 	bool isTouched = false;
 public:
+	GetHiddenMoneyObject() {
+		state = NEVER_TOUCH;
+	}
 	void setTouch(bool touch) {
 		this->isTouched = touch;
 	}
