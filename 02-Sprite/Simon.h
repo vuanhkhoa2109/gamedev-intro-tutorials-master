@@ -6,6 +6,10 @@
 #include "Timer.h"
 #include "Items.h"
 #include "Candle.h"
+#include "FireBall.h"
+#include "FishMan.h"
+#include "BlackLeopard.h"
+#include "Water.h"
 
 class Simon : public GameObject
 {

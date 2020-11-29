@@ -129,6 +129,71 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				}
 			}
 
+			else if (dynamic_cast<Water*>(e->obj))
+			{
+				Water* water = dynamic_cast<Water*>(e->obj);
+				water->AddBubbles(x, y + SIMON_BBOX_HEIGHT);
+
+				SetState(DEAD);
+				isFallingWater = true;
+				return;
+			}
+
+			else if (dynamic_cast<FireBall*>(e->obj))
+			{
+				LoseHP(1);
+				e->obj->SetEnable(false);
+			}
+
+			else if (e->obj->GetState() == DESTROYED) x += dx;
+
+			else if (e->obj->GetState() == BREAK)
+			{
+				x += dx;
+				y += dy;
+			}
+
+			else if (dynamic_cast<Zombie*>(e->obj) || dynamic_cast<BlackLeopard*>(e->obj) || dynamic_cast<FishMan*>(e->obj))
+			{
+				if (state != POWER && untouchableTimer->IsTimeUp() == true && invisibilityTimer->IsTimeUp() == true)
+				{
+					untouchableTimer->Start();
+
+					if (dynamic_cast<Zombie*>(e->obj))
+					{
+						Zombie* zombie = dynamic_cast<Zombie*>(e->obj);
+						LoseHP(zombie->GetAttack());
+					}
+					else if (dynamic_cast<BlackLeopard*>(e->obj))
+					{
+						BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(e->obj);
+						LoseHP(leopard->GetAttack());
+					}
+					else if (dynamic_cast<FishMan*>(e->obj))
+					{
+						FishMan* fishman = dynamic_cast<FishMan*>(e->obj);
+						LoseHP(fishman->GetAttack());
+					}
+
+					if (isStandOnStair == false || HP == 0)  // Simon ??ng trên c?u thang s? không b? b?t ng??c l?i
+					{
+						// ??t tr?ng thái deflect cho simon
+						if (e->nx != 0)
+						{
+							if (e->nx == CDIR_LEFT && this->nx == 1) this->nx = DIR_LEFT;
+							else if (e->nx == CDIR_RIGHT && this->nx == -1) this->nx = DIR_RIGHT;
+						}
+
+						SetState(DEFLECT);
+					}
+				}
+				else
+				{
+					if (e->nx != 0)	x + dx;
+					if (e->ny != 0) y += dy;
+				}
+			}
+
 		}
 	}
 

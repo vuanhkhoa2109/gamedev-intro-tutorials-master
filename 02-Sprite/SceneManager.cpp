@@ -409,13 +409,13 @@ void SceneManager::UpdateTimeCounter()
 	if (crossEffectTimer->IsTimeUp() == true)
 		crossEffectTimer->Stop();
 
-	//// Simon dead
-	//if (isSimonDead == true && simonDeadTimer->IsTimeUp() == true)
-	//{
-	//	simonDeadTimer->Stop();
-	//	isSimonDead = false;
-	//	ResetGame();
-	//}
+	// Simon dead
+	if (isSimonDead == true && simonDeadTimer->IsTimeUp() == true)
+	{
+		simonDeadTimer->Stop();
+		isSimonDead = false;
+		ResetGame();
+	}
 
 	//// Double shot
 	//if (doubleShotTimer->IsTimeUp() == true)
@@ -931,7 +931,7 @@ void SceneManager::Simon_Update(DWORD dt)
 		if (isSimonDead == false)
 		{
 			isSimonDead = true;
-			/*simonDeadTimer->Start();*/
+			simonDeadTimer->Start();
 		}
 
 		return;
@@ -986,6 +986,20 @@ void SceneManager::Weapon_Update(DWORD dt, int index)
 
 	vector<LPGAMEOBJECT> coObjects;
 	coObjects.push_back(simon); // dùng ?? xét va ch?m c?a Simon v?i boomerang
+
+	for (auto obj : listObjects)
+	{
+		if (dynamic_cast<Candle*>(obj) || dynamic_cast<Ground*>(obj) || dynamic_cast<FireBall*>(obj))
+			coObjects.push_back(obj);
+		else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE)
+			coObjects.push_back(obj);
+		else if (dynamic_cast<BlackLeopard*>(obj) &&
+			(obj->GetState() == BLACK_LEOPARD_ACTIVE || obj->GetState() == BLACK_LEOPARD_IDLE || obj->GetState() == BLACK_LEOPARD_JUMP))
+			coObjects.push_back(obj);
+		else if (dynamic_cast<FishMan*>(obj) &&
+			(obj->GetState() == FISHMAN_ACTIVE || obj->GetState() == FISHMAN_JUMP || obj->GetState() == FISHMAN_HIT))
+			coObjects.push_back(obj);
+	}
 
 	/*if (isBossFighting == true && boss->GetState() == BOSS_ACTIVE && subweaponList[index]->GetTargetTypeHit() != BOSS)
 		coObjects.push_back(boss);

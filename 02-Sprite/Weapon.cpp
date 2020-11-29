@@ -33,6 +33,52 @@ void Weapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					e->isLastFame = false;
 				}
 			}
+			else if (dynamic_cast<Zombie*>(obj))
+			{
+				Zombie* e = dynamic_cast<Zombie*> (obj);
+
+				if (this->AABBx(e) == true)
+				{
+					e->vx = 0;
+					e->SetState(ZOMBIE_DESTROYED);
+					e->isLastFame = false;
+				}
+			}
+			else if (dynamic_cast<BlackLeopard*>(obj))
+			{
+				BlackLeopard* e = dynamic_cast<BlackLeopard*> (obj);
+
+				if (this->AABBx(e) == true)
+				{
+					e->vx = 0;
+					e->SetState(BLACK_LEOPARD_DESTROYED);
+					e->isLastFame = false;
+				}
+			}
+			else if (dynamic_cast<FishMan*>(obj))
+			{
+				FishMan* e = dynamic_cast<FishMan*> (obj);
+
+				if (this->AABBx(e) == true)
+				{
+					e->vx = 0;
+					e->SetState(FISHMAN_DESTROYED);
+					e->isLastFame = false;
+				}
+			}
+
+			else if (dynamic_cast<FireBall*>(obj))
+			{
+				FireBall* e = dynamic_cast<FireBall*>(obj);
+
+				if (this->AABBx(e) == true)
+				{
+					GetCoordinateObject(obj);
+					e->vx = 0;
+					e->SetEnable(false);
+					e->isLastFame = false;
+				}
+			}
 			/*
 
 			else if (dynamic_cast<Zombie*>(obj))

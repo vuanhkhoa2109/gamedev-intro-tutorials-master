@@ -81,7 +81,7 @@ class SceneManager
 
 public:
 	Timer* stopWatchTimer = new Timer(WEAPONS_STOP_WATCH_TIME);
-	//Timer* simonDeadTimer = new Timer(SIMON_DEAD_TIME);
+	Timer* simonDeadTimer = new Timer(SIMON_DEAD_TIME);
 	Timer* crossEffectTimer = new Timer(ITEM_CROSS_EFFECT_TIME);
 	//Timer* doubleShotTimer = new Timer(ITEM_DOUBLE_SHOT_EFFECT_TIME);
 	//Timer* tripleShotTimer = new Timer(ITEM_TRIPLE_SHOT_EFFECT_TIME);

@@ -1,6 +1,10 @@
 #pragma once
 #include "GameObject.h"
 #include "debug.h"
+#include "Zombie.h"
+#include "BlackLeopard.h"
+#include "FireBall.h"
+#include "FishMan.h"
 class Weapon :
 	public GameObject
 {
