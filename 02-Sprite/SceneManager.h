@@ -14,6 +14,9 @@
 #include "debug.h"
 #include "BlackLeopard.h"
 #include "Zombie.h"
+#include "FishMan.h"
+#include "FireBall.h"
+#include "Water.h"
 
 #include <map>
 #include "MoneyBagFlashing.h"
@@ -45,6 +48,10 @@ class SceneManager
 	Stair* stair;
 	//Door* door;
 	Zombie* zombie;
+	FishMan* fishman;
+	FireBall* fireball;
+	Water* water;
+	Bubble* bubble;
 	//BlackLeopard* leopard;
 	//VampireBat* bat;
 	//FishMan* fishman;

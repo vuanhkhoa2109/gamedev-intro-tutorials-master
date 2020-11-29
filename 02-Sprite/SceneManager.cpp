@@ -55,7 +55,9 @@ void SceneManager::LoadResources()
 	candle = new Candle();
 	item = new Items();
 	zombie = new Zombie();
-
+	fishman = new FishMan();
+	fireball = new FireBall();
+	bubble = new Bubble();
 	/*candle = new Candle();
 
 	weapon = new Weapon();
@@ -158,6 +160,22 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			stair->SetType(typeStair);
 			listStairs.push_back(stair);
 			grid->Add(stair);
+		}
+		else if (ID_Obj == FISHMAN)
+		{
+			fishman = new FishMan();
+			fishman->SetPosition(pos_x, pos_y);
+			fishman->SetEntryPosition(pos_x, pos_y);
+			fishman->SetState(FISHMAN_INACTIVE);
+			fishman->SetEnable(true);
+			grid->Add(fishman);
+		}
+		else if (ID_Obj == WATER)
+		{
+			water = new Water();
+			water->SetPosition(pos_x, pos_y);
+			water->SetEnable(true);
+			grid->Add(water);
 		}
 		/*if (ID_Obj == CANDLE)
 		{
@@ -344,6 +362,8 @@ void SceneManager::Update(DWORD dt)
 			Zombie_Update(dt, object);
 		else if (dynamic_cast<BlackLeopard*>(object))
 			BlackLeopard_Update(dt, object);
+		else if (dynamic_cast<FishMan*>(object))
+			FishMan_Update(dt, object);
 		/*
 		else if (dynamic_cast<Zombie*>(object))
 			Zombie_Update(dt, object);
@@ -678,6 +698,12 @@ void SceneManager::SetInactivationByPosition()
 				auto leopard = dynamic_cast<BlackLeopard*>(object);
 				leopard->SetState(BLACK_LEOPARD_INACTIVE);
 			}
+			else if (dynamic_cast<FishMan*>(object)
+				&& (object->GetState() == FISHMAN_ACTIVE || object->GetState() == FISHMAN_JUMP))
+			{
+				auto fishman = dynamic_cast<FishMan*>(object);
+				fishman->SetState(FISHMAN_INACTIVE);
+			}
 			/*else if (dynamic_cast<BlackLeopard*>(object) && object->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
 				auto leopard = dynamic_cast<BlackLeopard*>(object);
@@ -922,6 +948,7 @@ void SceneManager::Simon_Update(DWORD dt)
 				dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE ||
 				dynamic_cast<Boss*>(obj) && obj->GetState() == BOSS_ACTIVE*/)
 				coObjects.push_back(obj);
+
 		//if (dynamic_cast<Door*>(obj) || dynamic_cast<Ground*>(obj) ||
 		//	dynamic_cast<ChangeSceneObject*>(obj) || dynamic_cast<Water*>(obj) || dynamic_cast<Candle*>(obj))
 		//	coObjects.push_back(obj);
@@ -1107,78 +1134,78 @@ void SceneManager::BlackLeopard_Update(DWORD dt, LPGAMEOBJECT& object)
 //	}
 //}
 //
-//void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
-//{
-//	auto fishman = dynamic_cast<FishMan*>(object);
-//
-//	if (fishman->GetState() != FISHMAN_INACTIVE)
-//	{
-//		if (fishman->GetState() == FISHMAN_ACTIVE && fishman->isSettedPosition == true &&
-//			GetTickCount() - fishman->GetLastTimeShoot() >= fishman->GetDeltaTimeToShoot())
-//		{
-//			fishman->SetState(FISHMAN_HIT);
-//
-//			// T?o fireball
-//			float fx, fy, nx;
-//
-//			fishman->GetPosition(fx, fy);
-//			nx = fishman->GetN();
-//
-//			auto fireball = new FireBall();
-//			fireball->SetPosition(fx + 5, fy + 10);
-//			fireball->SetN(nx);
-//			fireball->SetState(FIREBALL);
-//			fireball->SetEnable(true);
-//
-//			grid->Add(fireball);
-//
-//			// ??t h??ng quay m?t c?a Fishman sau khi b?n (quay v? phía simon)
-//			float sx, sy;
-//			simon->GetPosition(sx, sy);
-//
-//			if (fx < sx) fishman->SetNxAfterShoot(1);
-//			else fishman->SetNxAfterShoot(-1);
-//		}
-//		else
-//		{
-//			if (crossEffectTimer->IsTimeUp() == true && fishman->isSettedPosition == false)
-//			{
-//				fishman->isSettedPosition = true;
-//
-//				// Set v? trí cho fishman d?a vào v? trí c?a Simon
-//				float simon_x, simon_y;
-//				simon->GetPosition(simon_x, simon_y);
-//
-//				int nx = simon_x > fishman->GetEntryPosition().x ? 1 : -1;
-//				float distance = 50 + rand() % 150;
-//
-//				float x = simon_x - nx * distance;
-//				float y = fishman->GetEntryPosition().y;
-//
-//				fishman->SetN(nx);
-//				fishman->SetPosition(x, y);
-//
-//				fishman->SetState(FISHMAN_JUMP);
-//
-//				// Thêm bubbles vào water ?? render b?t n??c
-//				water->AddBubbles(x, y);
-//			}
-//
-//			vector<LPGAMEOBJECT> coObjects;
-//
-//			for (auto obj : listObjects)
-//			{
-//				if ((dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL) ||
-//					dynamic_cast<Ground*>(obj) || dynamic_cast<Water*>(obj))
-//					coObjects.push_back(obj);
-//			}
-//
-//			fishman->SetStopMovement(stopWatchMoment);
-//			fishman->Update(dt, &coObjects);
-//		}
-//	}
-//}
-//
+void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
+{
+	auto fishman = dynamic_cast<FishMan*>(object);
+
+	if (fishman->GetState() != FISHMAN_INACTIVE)
+	{
+		if (fishman->GetState() == FISHMAN_ACTIVE && fishman->isSettedPosition == true &&
+			GetTickCount() - fishman->GetLastTimeShoot() >= fishman->GetDeltaTimeToShoot())
+		{
+			fishman->SetState(FISHMAN_HIT);
+
+			// T?o fireball
+			float fx, fy, nx;
+
+			fishman->GetPosition(fx, fy);
+			nx = fishman->GetN();
+
+			auto fireball = new FireBall();
+			fireball->SetPosition(fx + 5, fy + 10);
+			fireball->SetN(nx);
+			fireball->SetState(FIREBALL);
+			fireball->SetEnable(true);
+
+			grid->Add(fireball);
+
+			// ??t h??ng quay m?t c?a Fishman sau khi b?n (quay v? phía simon)
+			float sx, sy;
+			simon->GetPosition(sx, sy);
+
+			if (fx < sx) fishman->SetNxAfterShoot(1);
+			else fishman->SetNxAfterShoot(-1);
+		}
+		else
+		{
+			if (crossEffectTimer->IsTimeUp() == true && fishman->isSettedPosition == false)
+			{
+				fishman->isSettedPosition = true;
+
+				// Set v? trí cho fishman d?a vào v? trí c?a Simon
+				float simon_x, simon_y;
+				simon->GetPosition(simon_x, simon_y);
+
+				int nx = simon_x > fishman->GetEntryPosition().x ? 1 : -1;
+				float distance = 50 + rand() % 150;
+
+				float x = simon_x - nx * distance;
+				float y = fishman->GetEntryPosition().y;
+
+				fishman->SetN(nx);
+				fishman->SetPosition(x, y);
+
+				fishman->SetState(FISHMAN_JUMP);
+
+				// Thêm bubbles vào water ?? render b?t n??c
+				water->AddBubbles(x, y);
+			}
+
+			vector<LPGAMEOBJECT> coObjects;
+
+			for (auto obj : listObjects)
+			{
+				if (/*(dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL) ||*/
+					dynamic_cast<Ground*>(obj) || dynamic_cast<Water*>(obj))
+					coObjects.push_back(obj);
+			}
+
+			fishman->SetStopMovement(stopWatchMoment);
+			fishman->Update(dt, &coObjects);
+		}
+	}
+}
+
 //void SceneManager::Boss_Update(DWORD dt, LPGAMEOBJECT& object)
 //{
 //	if (object->GetState() == BOSS_INACTIVE)

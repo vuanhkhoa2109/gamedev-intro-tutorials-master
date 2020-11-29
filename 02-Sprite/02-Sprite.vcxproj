@@ -123,9 +123,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlackLeopard.cpp" />
+    <ClCompile Include="Bubbles.cpp" />
     <ClCompile Include="Candle.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="FishMan.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GetHiddenMoneyObject.cpp" />
@@ -144,15 +147,19 @@
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Water.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlackLeopard.h" />
+    <ClInclude Include="Bubbles.h" />
     <ClInclude Include="Candle.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FireBall.h" />
+    <ClInclude Include="FishMan.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GetHiddenMoneyObject.h" />
@@ -170,6 +177,7 @@
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Water.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>

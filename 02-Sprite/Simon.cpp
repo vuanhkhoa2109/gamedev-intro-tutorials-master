@@ -7,6 +7,7 @@
 #include "GetHiddenMoneyObject.h"
 #include "Zombie.h"
 #include "BlackLeopard.h"
+#include "FishMan.h"
 
 
 Simon::Simon() : GameObject() {
@@ -548,6 +549,13 @@ void Simon::CheckCollisionWithEnemyActiveArea(vector<LPGAMEOBJECT>* listObjects)
 				BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(enemy);
 				if (leopard->GetState() == BLACK_LEOPARD_IDLE)
 					leopard->SetState(BLACK_LEOPARD_ACTIVE);
+			}
+			else if (dynamic_cast<FishMan*>(enemy))
+			{
+				FishMan* fishman = dynamic_cast<FishMan*>(enemy);
+
+				if (fishman->GetState() == FISHMAN_INACTIVE && fishman->IsAbleToActivate() == true)
+					fishman->SetState(FISHMAN_ACTIVE);
 			}
 		}
 	}

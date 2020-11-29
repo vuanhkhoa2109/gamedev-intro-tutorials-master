@@ -96,6 +96,18 @@
     <ClCompile Include="Stair.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="FishMan.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubbles.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -168,6 +180,18 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Stair.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="FishMan.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Bubbles.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
