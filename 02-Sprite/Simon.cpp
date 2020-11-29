@@ -8,6 +8,7 @@
 #include "Zombie.h"
 #include "BlackLeopard.h"
 #include "FishMan.h"
+#include "VampireBat.h"
 
 
 Simon::Simon() : GameObject() {
@@ -621,6 +622,13 @@ void Simon::CheckCollisionWithEnemyActiveArea(vector<LPGAMEOBJECT>* listObjects)
 
 				if (fishman->GetState() == FISHMAN_INACTIVE && fishman->IsAbleToActivate() == true)
 					fishman->SetState(FISHMAN_ACTIVE);
+			}
+			else if (dynamic_cast<VampireBat*>(enemy))
+			{
+				VampireBat* bat = dynamic_cast<VampireBat*>(enemy);
+
+				if (bat->GetState() == VAMPIRE_BAT_INACTIVE && bat->IsAbleToActivate() == true)
+					bat->SetState(VAMPIRE_BAT_ACTIVE);
 			}
 		}
 	}

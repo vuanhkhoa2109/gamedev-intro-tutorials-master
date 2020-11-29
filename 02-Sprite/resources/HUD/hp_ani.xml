@@ -1,0 +1,11 @@
+<animations name="hp">
+    <animation ID="SIMON_HP" defaultTime="100">
+        <frame spriteID="simon_hp" time="100"/>
+    </animation>
+	<animation ID="BOSS_HP" defaultTime="100">
+        <frame spriteID="boss_hp" time="100"/>
+    </animation>
+	<animation ID="SUB_HP" defaultTime="100">
+        <frame spriteID="sub_hp" time="100"/>
+    </animation>
+</animations>

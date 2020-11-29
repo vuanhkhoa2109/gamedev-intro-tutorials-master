@@ -32,6 +32,12 @@ void Sprite::Draw(float x, float y, int alpha)
 	game->Draw(x, y, texture, left, top, width, height, alpha);
 }
 
+void Sprite::DrawHud(float x, float y, int alpha)
+{
+	Game* game = Game::GetInstance();
+	game->DrawHud(x, y, texture, left, top, width, height, alpha);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Sprites::Add(string idSprite, int left, int top, int width, int height, LPDIRECT3DTEXTURE9 tex)

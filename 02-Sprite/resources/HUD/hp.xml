@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:79849fe998678e8e4364f4f166684bc5:1b64e18dd67ce0b53662ba93ee7e68b2:8258ee59d1782bc5ee2c627dbf913635$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="HP.png" width="24" height="15">
+    	<sprite n="simon_hp" x="1" y="1" w="7" h="14"/>
+	<sprite n="sub_hp" x="9" y="1" w="6" h="14"/>
+	<sprite n="boss_hp" x="16" y="1" w="7" h="14"/>
+</TextureAtlas>

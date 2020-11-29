@@ -2,9 +2,12 @@
 #include <Windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
+#include <string>
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
+
+#include "Const.h"
 
 #define KEYBOARD_BUFFER_SIZE 1024
 /*
@@ -43,6 +46,8 @@ class Game
 
 	float cam_x = 0.0f;
 	float cam_y = 0.0f;
+
+	ID3DXFont* font;
 #pragma endregion DX2D
 
 public:
@@ -52,6 +57,12 @@ public:
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int width, int height, int alpha = 255);
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
+
+	ID3DXFont* GetFont() {
+		return this->font;
+	}
+	void DrawUIText(std::string text, RECT bound);
+	void DrawHud(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha = 255);
 
 	static void SweptAABB(
 		float ml,			// move left 

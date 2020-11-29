@@ -17,10 +17,12 @@
 #include "FishMan.h"
 #include "FireBall.h"
 #include "Water.h"
+#include "VampireBat.h"
 
 #include <map>
 #include "MoneyBagFlashing.h"
 #include "Stair.h"
+#include "GUI.h"
 
 using namespace std;
 
@@ -52,13 +54,9 @@ class SceneManager
 	FireBall* fireball;
 	Water* water;
 	Bubble* bubble;
-	//BlackLeopard* leopard;
-	//VampireBat* bat;
-	//FishMan* fishman;
-	//FireBall* fireball;
-	//Bubble* bubble;
-	//Boss* boss;
-	//Water* water;
+	VampireBat* bat;
+
+	GUI* gui;
 
 	TileMaps* tilemaps = TileMaps::GetInstance();
 	Textures* textures = Textures::GetInstance();
@@ -78,6 +76,9 @@ class SceneManager
 
 	bool isBossFighting = false;
 	bool isSimonDead = false;
+
+	DWORD timeGamer = 300;
+	DWORD timeGamerCount = 0;
 
 public:
 	Timer* stopWatchTimer = new Timer(WEAPONS_STOP_WATCH_TIME);
@@ -101,6 +102,7 @@ public:
 	void UpdateTimeCounter();
 	void UpdateCameraPosition();
 	void UpdateGrid();
+	void UpdateTimeGamer();
 
 	void Render();
 
@@ -123,6 +125,7 @@ public:
 	//Boss* GetBoss() { return this->boss; }
 	//vector<SubWeapon*>* GetWeaponList() { return &subweaponList; }
 	vector<LPGAMEOBJECT>* GetListStairs() { return &(listStairs); }
+	GUI* GetUI() { return this->gui; }
 
 	bool IsMovingCamera() { return isMovingCamera1 || isMovingCamera2; }
 

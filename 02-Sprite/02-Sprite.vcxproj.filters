@@ -108,6 +108,12 @@
     <ClCompile Include="Bubbles.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="VampireBat.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="Bubbles.h">
       <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="VampireBat.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -134,6 +134,7 @@
     <ClCompile Include="GetHiddenMoneyObject.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="HiddenObject.cpp" />
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="VampireBat.cpp" />
     <ClCompile Include="Water.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
@@ -165,6 +167,7 @@
     <ClInclude Include="GetHiddenMoneyObject.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="HiddenObject.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="KeyboardInput.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="VampireBat.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />

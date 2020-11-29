@@ -10,6 +10,7 @@ using namespace std;
 
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
+#define FONT_PATH L"Font\\prstart.ttf"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
 #define SCREEN_WIDTH 512

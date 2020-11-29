@@ -1,0 +1,8 @@
+<animations name="rect">
+    <animation ID="BLACK_BOARD" defaultTime="100">
+        <frame spriteID="black_board" time="100"/>
+    </animation>
+	<animation ID="HEART_HUD" defaultTime="100">
+        <frame spriteID="heart_hud" time="100"/>
+    </animation>
+</animations>

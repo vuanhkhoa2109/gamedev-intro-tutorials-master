@@ -26,6 +26,7 @@ public:
 
 	void Draw(int nx, float x, float y, int alpha = 255);
 	void Draw(float x, float y, int alpha = 255);
+	void DrawHud(float x, float y, int alpha = 255);
 };
 
 typedef Sprite* LPSPRITE;

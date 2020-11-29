@@ -9,6 +9,7 @@ SceneManager::SceneManager(Game* game)
 
 	// INIT
 	simon = new Simon();
+	gui = new GUI();
 }
 
 SceneManager::~SceneManager()
@@ -58,6 +59,7 @@ void SceneManager::LoadResources()
 	fishman = new FishMan();
 	fireball = new FireBall();
 	bubble = new Bubble();
+	bat = new VampireBat();
 	/*candle = new Candle();
 
 	weapon = new Weapon();
@@ -176,6 +178,15 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			water->SetPosition(pos_x, pos_y);
 			water->SetEnable(true);
 			grid->Add(water);
+		}
+		else if (ID_Obj == VAMPIRE_BAT)
+		{
+			bat = new VampireBat();
+			bat->SetPosition(pos_x, pos_y);
+			bat->SetEntryPosition(pos_x, pos_y);
+			bat->SetState(VAMPIRE_BAT_INACTIVE);
+			bat->SetEnable(true);
+			grid->Add(bat);
 		}
 		/*if (ID_Obj == CANDLE)
 		{
@@ -364,6 +375,8 @@ void SceneManager::Update(DWORD dt)
 			BlackLeopard_Update(dt, object);
 		else if (dynamic_cast<FishMan*>(object))
 			FishMan_Update(dt, object);
+		else if (dynamic_cast<VampireBat*>(object))
+			VampireBat_Update(dt, object);
 		/*
 		else if (dynamic_cast<Zombie*>(object))
 			Zombie_Update(dt, object);
@@ -391,6 +404,10 @@ void SceneManager::Update(DWORD dt)
 
 	// update grid
 	UpdateGrid();
+
+	UpdateTimeGamer();
+
+	gui->Update(timeGamer, GetIDScene(), GetSimon());
 }
 
 void SceneManager::UpdateTimeCounter()
@@ -456,6 +473,8 @@ void SceneManager::Render()
 	//	obj->Render();
 	//	//obj->RenderBoundingBox();
 	//}
+
+	gui->Render(GetSimon());
 }
 
 void SceneManager::UpdateCameraPosition()
@@ -704,6 +723,11 @@ void SceneManager::SetInactivationByPosition()
 				auto fishman = dynamic_cast<FishMan*>(object);
 				fishman->SetState(FISHMAN_INACTIVE);
 			}
+			else if (dynamic_cast<VampireBat*>(object) && object->GetState() == VAMPIRE_BAT_ACTIVE)
+			{
+				auto bat = dynamic_cast<VampireBat*>(object);
+				bat->SetState(VAMPIRE_BAT_INACTIVE);
+			}
 			/*else if (dynamic_cast<BlackLeopard*>(object) && object->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
 				auto leopard = dynamic_cast<BlackLeopard*>(object);
@@ -886,6 +910,11 @@ void SceneManager::CrossEffect()
 				auto leopard = dynamic_cast<BlackLeopard*>(listObjects[i]);
 				leopard->SetState(BLACK_LEOPARD_DESTROYED);
 			}
+			else if (dynamic_cast<VampireBat*>(listObjects[i]) && listObjects[i]->GetState() == VAMPIRE_BAT_ACTIVE)
+			{
+				auto bat = dynamic_cast<VampireBat*>(listObjects[i]);
+				bat->SetState(VAMPIRE_BAT_DESTROYED);
+			}
 			/*
 			else if (dynamic_cast<BlackLeopard*>(listObjects[i]) && listObjects[i]->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
@@ -944,8 +973,8 @@ void SceneManager::Simon_Update(DWORD dt)
 		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
 				coObjects.push_back(obj);
 			else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE ||
-				dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE /*||
-				dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE ||
+				dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE ||
+				dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE /*||
 				dynamic_cast<Boss*>(obj) && obj->GetState() == BOSS_ACTIVE*/)
 				coObjects.push_back(obj);
 
@@ -1112,42 +1141,42 @@ void SceneManager::BlackLeopard_Update(DWORD dt, LPGAMEOBJECT& object)
 	}
 }
 
-//void SceneManager::VampireBat_Update(DWORD dt, LPGAMEOBJECT& object)
-//{
-//	if (crossEffectTimer->IsTimeUp() == true && object->GetState() != VAMPIRE_BAT_INACTIVE)
-//	{
-//		auto bat = dynamic_cast<VampireBat*>(object);
-//
-//		if (bat->isSettedPosition == false)
-//		{
-//			bat->isSettedPosition = true;
-//
-//			// set random h??ng cho d?i
-//			int listNx[2] = { -1, 1 };
-//			int rndIndex = rand() % 2;
-//			bat->SetN(listNx[rndIndex]);
-//
-//			// set v? trí cho d?i
-//			// d?i bay ngang t?m simon, t? phía cu?i c?a 2 ??u màn hình)
-//			float bx, by;
-//			int randomDistance = rand() % 30;
-//
-//			by = simon->y + (rand() % SIMON_BBOX_HEIGHT);
-//
-//			if (bat->GetN() == -1)
-//				bx = game->GetCamPos().x + SCREEN_WIDTH - (ENEMY_DEFAULT_BBOX_WIDTH - randomDistance);
-//			else
-//				bx = game->GetCamPos().x + (ENEMY_DEFAULT_BBOX_WIDTH - randomDistance);
-//
-//			bat->SetPosition(bx, by);
-//			bat->SetState(VAMPIRE_BAT_ACTIVE);
-//		}
-//
-//		bat->SetStopMovement(stopWatchMoment);
-//		bat->Update(dt, NULL);
-//	}
-//}
-//
+void SceneManager::VampireBat_Update(DWORD dt, LPGAMEOBJECT& object)
+{
+	if (crossEffectTimer->IsTimeUp() == true && object->GetState() != VAMPIRE_BAT_INACTIVE)
+	{
+		auto bat = dynamic_cast<VampireBat*>(object);
+
+		if (bat->isSettedPosition == false)
+		{
+			bat->isSettedPosition = true;
+
+			// set random h??ng cho d?i
+			int listNx[2] = { -1, 1 };
+			int rndIndex = rand() % 2;
+			bat->SetN(listNx[rndIndex]);
+
+			// set v? trí cho d?i
+			// d?i bay ngang t?m simon, t? phía cu?i c?a 2 ??u màn hình)
+			float bx, by;
+			int randomDistance = rand() % 30;
+
+			by = simon->y + (rand() % SIMON_BBOX_HEIGHT);
+
+			if (bat->GetN() == -1)
+				bx = game->GetCamPos().x + SCREEN_WIDTH - (ENEMY_DEFAULT_BBOX_WIDTH - randomDistance);
+			else
+				bx = game->GetCamPos().x + (ENEMY_DEFAULT_BBOX_WIDTH - randomDistance);
+
+			bat->SetPosition(bx, by);
+			bat->SetState(VAMPIRE_BAT_ACTIVE);
+		}
+
+		bat->SetStopMovement(stopWatchMoment);
+		bat->Update(dt, NULL);
+	}
+}
+
 void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
 {
 	auto fishman = dynamic_cast<FishMan*>(object);
@@ -1237,4 +1266,17 @@ void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
 //
 //	boss->Update(dt);
 //}
+
+void SceneManager::UpdateTimeGamer() {
+	if (timeGamerCount == 0)
+		timeGamerCount = GetTickCount();
+
+	if (timeGamerCount != 0 && GetTickCount() - timeGamerCount >= 1000)
+	{
+		if (timeGamer > 0)
+			timeGamer--;
+
+		timeGamerCount = 0;
+	}
+}
 

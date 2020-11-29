@@ -22,6 +22,8 @@
         <texture id="1800000" path="resources\\boss\\boss.png" red="255" green="0" blue="255"/>
         <texture id="1900000" path="resources\\spark\\spark.png" red="255" green="0" blue="255"/>
         <texture id="2000000" path="resources\\break_wall\\break_wall.png" red="255" green="0" blue="255"/>
+		<texture id="2100000" path="resources\\HUD\\Rect.png" red="255" green="0" blue="255"/>
+		<texture id="2200000" path="resources\\HUD\\HP.png" red="255" green="0" blue="255"/>
 	</textures>
 
 	<sprites>
@@ -44,6 +46,8 @@
         <sprite path="resources\\boss\\boss.xml" texid="1800000"/>
         <sprite path="resources\\spark\\spark.xml" texid="1900000"/>
         <sprite path="resources\\break_wall\\break_wall.xml" texid="2000000"/>
+		<sprite path="resources\\HUD\\rect.xml" texid="2100000"/>
+		<sprite path="resources\\HUD\\hp.xml" texid="2200000"/>
 	</sprites>
 
 	<animations AtlasPath="Effect_sprite.xml">
@@ -66,5 +70,7 @@
         <animation path="resources\\boss\\boss_ani.xml" />
         <animation path="resources\\spark\\spark_ani.xml" />
         <animation path="resources\\break_wall\\break_wall_ani.xml" />
+		<animation path="resources\\HUD\\rect_ani.xml" />
+		<animation path="resources\\HUD\\hp_ani.xml" />
 	</animations>
 </game>
