@@ -11,21 +11,13 @@
 #include "Weapon.h"
 #include "Items.h"
 #include "GetHiddenMoneyObject.h"
-//#include "SubWeapon.h"
-//#include "Stair.h"
-//#include "Door.h"
+#include "debug.h"
+#include "BlackLeopard.h"
 #include "Zombie.h"
-//#include "BlackLeopard.h"
-//#include "VampireBat.h"
-//#include "FireBall.h"
-//#include "FishMan.h"
-//#include "Bubbles.h"
-//#include "Boss.h"
-//#include "Water.h"
-//#include "Timer.h"
 
 #include <map>
 #include "MoneyBagFlashing.h"
+#include "Stair.h"
 
 using namespace std;
 
@@ -46,10 +38,11 @@ class SceneManager
 	Ground* ground;
 	Items* item;
 	Weapon* weapon;
+	BlackLeopard* leopard;
 	GetHiddenMoneyObject* hiddenObject;
 	MoneyBagFlashing* moneyBag;
 	//SubWeapon* subweapon;
-	//Stair* stair;
+	Stair* stair;
 	//Door* door;
 	Zombie* zombie;
 	//BlackLeopard* leopard;
@@ -80,7 +73,7 @@ class SceneManager
 	bool isSimonDead = false;
 
 public:
-	//Timer* stopWatchTimer = new Timer(WEAPONS_STOP_WATCH_TIME);
+	Timer* stopWatchTimer = new Timer(WEAPONS_STOP_WATCH_TIME);
 	//Timer* simonDeadTimer = new Timer(SIMON_DEAD_TIME);
 	Timer* crossEffectTimer = new Timer(ITEM_CROSS_EFFECT_TIME);
 	//Timer* doubleShotTimer = new Timer(ITEM_DOUBLE_SHOT_EFFECT_TIME);

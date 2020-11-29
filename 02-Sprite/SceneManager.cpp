@@ -1,6 +1,5 @@
 #include "SceneManager.h"
-#include "debug.h"
-#include "GetHiddenMoneyObject.h"
+
 
 
 SceneManager::SceneManager(Game* game)
@@ -141,6 +140,25 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			zombie->SetEnable(isEnable);
 			grid->Add(zombie);
 		}
+		else if (ID_Obj == BLACK_LEOPARD)
+		{
+			leopard = new BlackLeopard();
+			leopard->SetPosition(pos_x, pos_y);
+			leopard->SetEntryPosition(pos_x, pos_y);
+			leopard->SetState(INACTIVE);
+			leopard->SetEnable(true);
+			grid->Add(leopard);
+		}
+		else if (ID_Obj == STAIR)
+		{
+			stair = new Stair();
+			stair->SetPosition(pos_x, pos_y);
+			stair->SetState(state);
+			stair->SetEnable(isEnable);
+			stair->SetType(typeStair);
+			listStairs.push_back(stair);
+			grid->Add(stair);
+		}
 		/*if (ID_Obj == CANDLE)
 		{
 			candle = new Candle();
@@ -270,6 +288,8 @@ void SceneManager::GetObjectFromGrid()
 		listObjects.push_back(obj);
 		if (dynamic_cast<Ground*>(obj))
 			continue;
+		else if (dynamic_cast<Stair*>(obj))
+			listStairs.push_back(obj);
 		else if (dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
 			listStaticObjectsToRender.push_back(obj);
 		else
@@ -322,6 +342,8 @@ void SceneManager::Update(DWORD dt)
 			Item_Update(dt, object);
 		else if (dynamic_cast<Zombie*>(object))
 			Zombie_Update(dt, object);
+		else if (dynamic_cast<BlackLeopard*>(object))
+			BlackLeopard_Update(dt, object);
 		/*
 		else if (dynamic_cast<Zombie*>(object))
 			Zombie_Update(dt, object);
@@ -353,20 +375,19 @@ void SceneManager::Update(DWORD dt)
 
 void SceneManager::UpdateTimeCounter()
 {
-	// Stop Watch
-	//if (stopWatchTimer->IsTimeUp() == true)
-	//{
-	//	stopWatchTimer->Stop();
-	//	stopWatchMoment = false;
-	//}
-	//else
-	//{
-	//	stopWatchMoment = true;
-	//}
+	if (stopWatchTimer->IsTimeUp() == true)
+	{
+		stopWatchTimer->Stop();
+		stopWatchMoment = false;
+	}
+	else
+	{
+		stopWatchMoment = true;
+	}
 
-	//// Cross
-	//if (crossEffectTimer->IsTimeUp() == true)
-	//	crossEffectTimer->Stop();
+	// Cross
+	if (crossEffectTimer->IsTimeUp() == true)
+		crossEffectTimer->Stop();
 
 	//// Simon dead
 	//if (isSimonDead == true && simonDeadTimer->IsTimeUp() == true)
@@ -652,6 +673,11 @@ void SceneManager::SetInactivationByPosition()
 				auto zombie = dynamic_cast<Zombie*>(object);
 				zombie->SetState(ZOMBIE_INACTIVE);
 			}
+			else if (dynamic_cast<BlackLeopard*>(object) && object->GetState() == BLACK_LEOPARD_ACTIVE)
+			{
+				auto leopard = dynamic_cast<BlackLeopard*>(object);
+				leopard->SetState(BLACK_LEOPARD_INACTIVE);
+			}
 			/*else if (dynamic_cast<BlackLeopard*>(object) && object->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
 				auto leopard = dynamic_cast<BlackLeopard*>(object);
@@ -829,6 +855,11 @@ void SceneManager::CrossEffect()
 				auto zombie = dynamic_cast<Zombie*>(listObjects[i]);
 				zombie->SetState(ZOMBIE_DESTROYED);
 			}
+			else if (dynamic_cast<BlackLeopard*>(listObjects[i]) && listObjects[i]->GetState() == BLACK_LEOPARD_ACTIVE)
+			{
+				auto leopard = dynamic_cast<BlackLeopard*>(listObjects[i]);
+				leopard->SetState(BLACK_LEOPARD_DESTROYED);
+			}
 			/*
 			else if (dynamic_cast<BlackLeopard*>(listObjects[i]) && listObjects[i]->GetState() == BLACK_LEOPARD_ACTIVE)
 			{
@@ -886,8 +917,8 @@ void SceneManager::Simon_Update(DWORD dt)
 	{
 		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
 				coObjects.push_back(obj);
-			else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE /*||
-				dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE ||
+			else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE ||
+				dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE /*||
 				dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE ||
 				dynamic_cast<Boss*>(obj) && obj->GetState() == BOSS_ACTIVE*/)
 				coObjects.push_back(obj);
@@ -1000,7 +1031,7 @@ void SceneManager::Zombie_Update(DWORD dt, LPGAMEOBJECT& object)
 
 		for (auto obj : listObjects)
 		{
-			if (dynamic_cast<Ground*>(obj)/* || (dynamic_cast<BreakWall*>(obj)*/ && obj->GetState() == NORMAL)
+			if (dynamic_cast<Ground*>(obj)/* || (dynamic_cast<BreakWall*>(obj)*/ /*&& obj->GetState() == NORMAL*/)
 				coObjects.push_back(obj);
 		}
 
@@ -1010,35 +1041,35 @@ void SceneManager::Zombie_Update(DWORD dt, LPGAMEOBJECT& object)
 
 }
 
-//void SceneManager::BlackLeopard_Update(DWORD dt, LPGAMEOBJECT& object)
-//{
-//	//BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(object);
-//
-//	if (leopard->GetState() == BLACK_LEOPARD_INACTIVE)
-//	{
-//		if (leopard->IsAbleToActivate() == true && IsInViewport(leopard) == true
-//			&& abs(simon->x - leopard->GetEntryPosition().x) > BLACK_LEOPARD_ACTIVE_BBOX_WIDTH)
-//		{
-//			int nx = leopard->GetEntryPosition().x < simon->x ? 1 : -1;
-//			leopard->SetN(nx);
-//
-//			leopard->SetState(BLACK_LEOPARD_IDLE);
-//		}
-//	}
-//	else
-//	{
-//		vector<LPGAMEOBJECT> coObjects;
-//
-//		for (auto obj : listObjects)
-//		{
-//			if (dynamic_cast<Ground*>(obj) || (dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL))
-//				coObjects.push_back(obj);
-//		}
-//
-//		object->SetStopMovement(stopWatchMoment);
-//		object->Update(dt, &coObjects);
-//	}
-//}
+void SceneManager::BlackLeopard_Update(DWORD dt, LPGAMEOBJECT& object)
+{
+	BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(object);
+
+	if (leopard->GetState() == BLACK_LEOPARD_INACTIVE)
+	{
+		if (leopard->IsAbleToActivate() == true && IsInViewport(leopard) == true
+			&& abs(simon->x - leopard->GetEntryPosition().x) > BLACK_LEOPARD_ACTIVE_BBOX_WIDTH)
+		{
+			int nx = leopard->GetEntryPosition().x < simon->x ? 1 : -1;
+			leopard->SetN(nx);
+
+			leopard->SetState(BLACK_LEOPARD_IDLE);
+		}
+	}
+	else
+	{
+		vector<LPGAMEOBJECT> coObjects;
+
+		for (auto obj : listObjects)
+		{
+			if (dynamic_cast<Ground*>(obj))
+				coObjects.push_back(obj);
+		}
+
+		object->SetStopMovement(stopWatchMoment);
+		object->Update(dt, &coObjects);
+	}
+}
 
 //void SceneManager::VampireBat_Update(DWORD dt, LPGAMEOBJECT& object)
 //{

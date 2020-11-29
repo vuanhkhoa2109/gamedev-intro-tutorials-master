@@ -5,6 +5,8 @@
 #include "Game.h"
 #include "Ground.h"
 #include "GetHiddenMoneyObject.h"
+#include "Zombie.h"
+#include "BlackLeopard.h"
 
 
 Simon::Simon() : GameObject() {
@@ -354,7 +356,60 @@ bool Simon::IsStairUpping()
 }
 
 #pragma endregion CheckState
+void Simon::CheckCollisionWithStair(vector<LPGAMEOBJECT>* listStair)
+{
+	float simonLeft, simonTop, simonRight, simonBottom;
+	GetBoundingBox(simonLeft, simonTop, simonRight, simonBottom);
 
+	GetBoundingBoxFoot(simonLeft, simonTop, simonRight, simonBottom);
+	for (UINT i = 0; i < listStair->size(); i++)
+	{
+		if (listStair->at(i)->GetType() == "BOTTOM")
+		{
+			float stair_l, stair_t, stair_r, stair_b;
+			listStair->at(i)->GetBoundingBox(stair_l, stair_t, stair_r, stair_b);
+			if (Game::AABB(simonLeft, simonTop, simonRight, simonBottom, stair_l, stair_t, stair_r, stair_b))
+			{
+				if (listStair->at(i)->GetState() == STAIR_LEFT_UP) stairDirection = 1;
+				else stairDirection = -1;
+
+				stairCollided = listStair->at(i);
+				isCollisionWithStair = true;
+				canMoveUpStair = true;
+				if (simonBottom > stair_b)
+				{
+					canMoveDownStair = false;
+				}
+				else if (simonTop - 10 < stair_t) // -10 have it to moving down first stair
+				{
+					canMoveDownStair = true;
+				}
+				break;
+			}
+		}
+		else if (listStair->at(i)->GetType() == "TOP")
+		{
+			float stair_l, stair_t, stair_r, stair_b;
+			listStair->at(i)->GetBoundingBox(stair_l, stair_t, stair_r, stair_b);
+
+			if (Game::AABB(simonLeft, simonTop, simonRight, simonBottom, stair_l, stair_t, stair_r, stair_b))
+			{
+				if (listStair->at(i)->GetState() == STAIR_LEFT_UP) stairDirection = 1;
+				else stairDirection = -1;
+
+				stairCollided = listStair->at(i);
+				isCollisionWithStair = true;
+				canMoveDownStair = true;
+				canMoveUpStair = false;
+				if (simonBottom > stair_b)
+				{
+					canMoveUpStair = true;
+				}
+				break;
+			}
+		}
+	}
+}
 
 bool Simon::CheckCollisionWithItem(vector<LPGAMEOBJECT>* listItem)
 {
@@ -458,6 +513,44 @@ void Simon::CheckCollisionWithEnemyActiveArea(vector<LPGAMEOBJECT>* listObjects)
 
 	GetBoundingBox(simon_l, simon_t, simon_r, simon_b);
 
+	for (UINT i = 0; i < listObjects->size(); i++)
+	{
+		Enemy* enemy = dynamic_cast<Enemy*>(listObjects->at(i));
+
+		if (enemy == NULL)
+			continue;
+
+		// Không c?n xét vùng active n?a khi nó ?ang active / destroyed
+		if (enemy->GetState() == ZOMBIE_ACTIVE ||
+			enemy->GetState() == FISHMAN_ACTIVE ||
+			enemy->GetState() == BLACK_LEOPARD_ACTIVE ||
+			enemy->GetState() == VAMPIRE_BAT_ACTIVE ||
+			enemy->GetState() == BOSS_ACTIVE ||
+			enemy->GetState() == DESTROYED)
+			continue;
+
+		float enemy_l, enemy_t, enemy_r, enemy_b;
+		enemy->GetActiveBoundingBox(enemy_l, enemy_t, enemy_r, enemy_b);
+
+		if (Game::AABB(simon_l, simon_t, simon_r, simon_b, enemy_l, enemy_t, enemy_r, enemy_b) == true)
+		{
+			D3DXVECTOR2 enemyEntryPostion = enemy->GetEntryPosition();
+
+			if (dynamic_cast<Zombie*>(enemy))
+			{
+				Zombie* zombie = dynamic_cast<Zombie*>(enemy);
+
+				if (zombie->GetState() == ZOMBIE_INACTIVE && zombie->IsAbleToActivate() == true)
+					zombie->SetState(ZOMBIE_ACTIVE);
+			}
+			else if (dynamic_cast<BlackLeopard*>(enemy))
+			{
+				BlackLeopard* leopard = dynamic_cast<BlackLeopard*>(enemy);
+				if (leopard->GetState() == BLACK_LEOPARD_IDLE)
+					leopard->SetState(BLACK_LEOPARD_ACTIVE);
+			}
+		}
+	}
 }
 
 void Simon::DoAutoWalk()

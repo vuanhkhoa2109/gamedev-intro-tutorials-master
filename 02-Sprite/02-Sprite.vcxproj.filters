@@ -90,6 +90,12 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="BlackLeopard.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -156,6 +162,12 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackLeopard.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

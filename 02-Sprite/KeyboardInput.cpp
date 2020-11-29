@@ -473,6 +473,6 @@ bool KeyBoardInput::StairCollisionsDetection()
 	Simon* simon = scene->GetSimon();
 	vector<LPGAMEOBJECT>* listStairs = scene->GetListStairs();
 
-	//simon->CheckCollisionWithStair(listStairs);
+	simon->CheckCollisionWithStair(listStairs);
 	return simon->isCollisionWithStair;
 }
