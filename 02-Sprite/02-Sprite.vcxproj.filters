@@ -114,6 +114,12 @@
     <ClCompile Include="GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SubWeapon.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -205,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="GUI.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SubWeapon.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,8 @@
 #include "MoneyBagFlashing.h"
 #include "Stair.h"
 #include "GUI.h"
+#include "Boss.h"
+#include "SubWeapon.h"
 
 using namespace std;
 
@@ -46,7 +48,7 @@ class SceneManager
 	BlackLeopard* leopard;
 	GetHiddenMoneyObject* hiddenObject;
 	MoneyBagFlashing* moneyBag;
-	//SubWeapon* subweapon;
+	SubWeapon* subweapon;
 	Stair* stair;
 	//Door* door;
 	Zombie* zombie;
@@ -55,6 +57,7 @@ class SceneManager
 	Water* water;
 	Bubble* bubble;
 	VampireBat* bat;
+	Boss* boss;
 
 	GUI* gui;
 
@@ -63,6 +66,7 @@ class SceneManager
 	Sprites* sprites = Sprites::GetInstance();
 	Animations* animations = Animations::GetInstance();
 
+	vector<SubWeapon*> subweaponList;
 	vector<LPGAMEOBJECT> listStaticObjectsToRender;
 	vector<LPGAMEOBJECT> listMovingObjectsToRender;
 	vector<LPGAMEOBJECT> listDoors;
@@ -84,8 +88,8 @@ public:
 	Timer* stopWatchTimer = new Timer(WEAPONS_STOP_WATCH_TIME);
 	Timer* simonDeadTimer = new Timer(SIMON_DEAD_TIME);
 	Timer* crossEffectTimer = new Timer(ITEM_CROSS_EFFECT_TIME);
-	//Timer* doubleShotTimer = new Timer(ITEM_DOUBLE_SHOT_EFFECT_TIME);
-	//Timer* tripleShotTimer = new Timer(ITEM_TRIPLE_SHOT_EFFECT_TIME);
+	Timer* doubleShotTimer = new Timer(ITEM_DOUBLE_SHOT_EFFECT_TIME);
+	Timer* tripleShotTimer = new Timer(ITEM_TRIPLE_SHOT_EFFECT_TIME);
 
 	SceneManager(Game* game);
 	~SceneManager();
@@ -122,8 +126,8 @@ public:
 	// Get, Set
 	int GetIDScene() { return this->IDScene; }
 	Simon* GetSimon() { return this->simon; }
-	//Boss* GetBoss() { return this->boss; }
-	//vector<SubWeapon*>* GetWeaponList() { return &subweaponList; }
+	Boss* GetBoss() { return this->boss; }
+	vector<SubWeapon*>* GetWeaponList() { return &subweaponList; }
 	vector<LPGAMEOBJECT>* GetListStairs() { return &(listStairs); }
 	GUI* GetUI() { return this->gui; }
 

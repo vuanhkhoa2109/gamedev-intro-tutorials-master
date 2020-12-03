@@ -283,69 +283,69 @@ void KeyBoardInput::Simon_Hit()
 
 void KeyBoardInput::Simon_Hit_SubWeapon()
 {
-	//Simon* simon = scene->GetSimon();
-	////SubWeapon* subweapon = scene->GetSubWeapon();
+	Simon* simon = scene->GetSimon();
+	//SubWeapon* subweapon = scene->GetSubWeapon();
 
-	//vector<SubWeapon*>* subweaponList = scene->GetWeaponList();
-	//SubWeapon* subweapon;
+	vector<SubWeapon*>* subweaponList = scene->GetWeaponList();
+	SubWeapon* subweapon;
 
-	//if (simon->GetSubWeapon() == "") // không có v? khí 
-	//	return;
+	if (simon->GetSubWeapon() == "") // không có v? khí 
+		return;
 
-	//if (simon->GetSubWeapon() == STOP_WATCH_SUB)
-	//{
-	//	/*	if (simon->GetEnergy() < 5)
-	//			return;*/
-	//	if (scene->stopWatchTimer->IsTimeUp() == false) // ?ang s? d?ng stop watch
-	//		return;
+	if (simon->GetSubWeapon() == STOP_WATCH_SUB)
+	{
+		/*	if (simon->GetEnergy() < 5)
+				return;*/
+		if (scene->stopWatchTimer->IsTimeUp() == false) // ?ang s? d?ng stop watch
+			return;
 
-	//	subweaponList->at(0)->SetEnable(false);
-	//}
+		subweaponList->at(0)->SetEnable(false);
+	}
 
-	//if (subweaponList->at(0)->IsEnable() == false)
-	//	subweapon = subweaponList->at(0);
+	if (subweaponList->at(0)->IsEnable() == false)
+		subweapon = subweaponList->at(0);
 
-	//else if (subweaponList->at(1)->IsEnable() == false && (scene->doubleShotTimer->IsTimeUp() == false || scene->tripleShotTimer->IsTimeUp() == false))
-	//	subweapon = subweaponList->at(1);
-	//else if (subweaponList->at(2)->IsEnable() == false && scene->tripleShotTimer->IsTimeUp() == false)
-	//	subweapon = subweaponList->at(2);
-	//else return;
+	else if (subweaponList->at(1)->IsEnable() == false && (scene->doubleShotTimer->IsTimeUp() == false || scene->tripleShotTimer->IsTimeUp() == false))
+		subweapon = subweaponList->at(1);
+	else if (subweaponList->at(2)->IsEnable() == false && scene->tripleShotTimer->IsTimeUp() == false)
+		subweapon = subweaponList->at(2);
+	else return;
 
-	//if (simon->GetState() == IDLE || simon->GetState() == JUMP ||
-	//	simon->GetState() == SIT || simon->GetState() == STAIR_UP ||
-	//	simon->GetState() == STAIR_DOWN)
-	//{
-	//	float sx, sy;
+	if (simon->GetState() == IDLE || simon->GetState() == JUMP ||
+		simon->GetState() == SIT || simon->GetState() == STAIR_UP ||
+		simon->GetState() == STAIR_DOWN)
+	{
+		float sx, sy;
 
-	//	// position
-	//	simon->GetPosition(sx, sy);
+		// position
+		simon->GetPosition(sx, sy);
 
-	//	if (simon->GetState() == SIT) sy += 25.0f; // kh?p v? trí tay
-	//	else sy += 10.0f;
-	//	if (simon->GetN() < 0) sx += 30.0f;
-	//	else sx += 30.0f;
+		if (simon->GetState() == SIT) sy += 25.0f; // kh?p v? trí tay
+		else sy += 10.0f;
+		if (simon->GetN() < 0) sx += 30.0f;
+		else sx += 30.0f;
 
-	//	subweapon->SetPosition(sx, sy);
+		subweapon->SetPosition(sx, sy);
 
-	//	// orientation
-	//	subweapon->SetN(simon->GetN());
+		// orientation
+		subweapon->SetN(simon->GetN());
 
-	//	// state subweapon
-	//	subweapon->SetEnable(true);
-	//	subweapon->SetState(simon->GetSubWeapon());
+		// state subweapon
+		subweapon->SetEnable(true);
+		subweapon->SetState(simon->GetSubWeapon());
 
-	//	if (subweapon->GetState() == STOP_WATCH_SUB)
-	//	{
-	//		simon->LoseEnergy(5);
-	//		scene->stopWatchTimer->Start();
-	//	}
-	//	else
-	//	{
-	//		simon->LoseEnergy(1);
-	//		simon->isHitSubWeapons = true;
-	//		Simon_Hit();
-	//	}
-	//}
+		if (subweapon->GetState() == STOP_WATCH_SUB)
+		{
+			simon->LoseEnergy(5);
+			scene->stopWatchTimer->Start();
+		}
+		else
+		{
+			simon->LoseEnergy(1);
+			simon->isHitSubWeapons = true;
+			Simon_Hit();
+		}
+	}
 }
 
 void KeyBoardInput::Simon_Stair_Down()
