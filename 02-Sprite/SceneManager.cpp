@@ -188,20 +188,28 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			boss->SetEnable(true);
 			grid->Add(boss);
 		}
-		/*else if (ID_Obj == CHANGE_SCENE_OBJECT)
+		else if (ID_Obj == DOOR)
 		{
-			ChangeSceneObject* changeScene = new ChangeSceneObject();
-			changeScene->SetPosition(pos_x, pos_y);
-			changeScene->SetIDNextScene(atoi(state.c_str()));
-			changeScene->SetEnable(true);
-			grid->Add(changeScene);
-		}*/
+			door = new Door();
+			door->SetPosition(pos_x, pos_y);
+			door->SetState(state);
+			door->SetEnable(isEnable);
+			grid->Add(door);
+		}
 		else if (ID_Obj == WATER)
 		{
 			water = new Water();
 			water->SetPosition(pos_x, pos_y);
 			water->SetEnable(true);
 			grid->Add(water);
+		}
+		else if (ID_Obj == CHANGE_SCENE_BLOCK)
+		{
+			changeScene = new ChangeSceneBlock();
+			changeScene->SetPosition(pos_x, pos_y);
+			changeScene->SetIDNextScene(atoi(state.c_str()));
+			changeScene->SetEnable(true);
+			grid->Add(changeScene);
 		}
 		/*else if (ID_Obj == BREAKWALL)
 		{
@@ -235,6 +243,8 @@ void SceneManager::GetObjectFromGrid()
 		listObjects.push_back(obj);
 		if (dynamic_cast<Ground*>(obj))
 			continue;
+		else if (dynamic_cast<Door*>(obj))
+			listDoors.push_back(obj);
 		else if (dynamic_cast<Stair*>(obj))
 			listStairs.push_back(obj);
 		else if (dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
@@ -377,11 +387,11 @@ void SceneManager::Render()
 		subweaponList[i]->Render();
 	}
 
-	//for (auto obj : listDoors)
-	//{
-	//	obj->Render();
-	//	//obj->RenderBoundingBox();
-	//}
+	for (auto obj : listDoors)
+	{
+		obj->Render();
+		//obj->RenderBoundingBox();
+	}
 
 	gui->Render(GetSimon());
 }
@@ -573,14 +583,6 @@ void SceneManager::SetDropItems()
 			object->GetPosition(x, y);
 			object->SetIsDroppedItem(true);
 		}
-
-		else if ((dynamic_cast<Zombie*>(object) && object->GetState() == ZOMBIE_DESTROYED) ||
-			(dynamic_cast<VampireBat*>(object) && object->GetState() == VAMPIRE_BAT_DESTROYED) ||
-			(dynamic_cast<FishMan*>(object) && object->GetState() == FISHMAN_DESTROYED))
-		{
-			idItem = GetRandomItem();
-			object->GetPosition(x, y);
-			object->SetIsDroppedItem(true);
 		}*/
 
 		if (idItem != "")
@@ -846,7 +848,7 @@ void SceneManager::Simon_Update(DWORD dt)
 
 	for (auto obj : listObjects)
 	{
-		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
+		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj) || dynamic_cast<Door*>(obj) || dynamic_cast<ChangeSceneBlock*>(obj))
 			coObjects.push_back(obj);
 		else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE ||
 			dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE ||

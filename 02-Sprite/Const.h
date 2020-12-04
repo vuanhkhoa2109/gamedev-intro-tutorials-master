@@ -426,7 +426,7 @@ const string BLACK_LEOPARD = "BLACK_LEOPARD";
 const string VAMPIRE_BAT = "VAMPIRE_BAT";
 const string FISHMAN = "FISHMAN";
 const string BOSS = "BOSS";
-const string CHANGE_SCENE_OBJECT = "CHANGE_SCENE_OBJECT";
+const string CHANGE_SCENE_BLOCK = "CHANGE_SCENE_BLOCK";
 const string WATER = "WATER";
 const string BREAKWALL = "BREAKWALL";
 

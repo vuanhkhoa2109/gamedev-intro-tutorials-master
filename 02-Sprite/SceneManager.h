@@ -25,6 +25,8 @@
 #include "GUI.h"
 #include "Boss.h"
 #include "SubWeapon.h"
+#include "Door.h"
+#include "ChangeSceneBlock.h"
 
 using namespace std;
 
@@ -50,7 +52,7 @@ class SceneManager
 	MoneyBagFlashing* moneyBag;
 	SubWeapon* subweapon;
 	Stair* stair;
-	//Door* door;
+	Door* door;
 	Zombie* zombie;
 	FishMan* fishman;
 	FireBall* fireball;
@@ -58,7 +60,7 @@ class SceneManager
 	Bubble* bubble;
 	VampireBat* bat;
 	Boss* boss;
-
+	ChangeSceneBlock* changeScene;
 	GUI* gui;
 
 	TileMaps* tilemaps = TileMaps::GetInstance();

@@ -126,7 +126,9 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Bubbles.cpp" />
     <ClCompile Include="Candle.cpp" />
+    <ClCompile Include="ChangeSceneBlock.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="FishMan.cpp" />
@@ -160,8 +162,10 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Bubbles.h" />
     <ClInclude Include="Candle.h" />
+    <ClInclude Include="ChangeSceneBlock.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="FishMan.h" />

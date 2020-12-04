@@ -9,6 +9,9 @@
 #include "BlackLeopard.h"
 #include "FishMan.h"
 #include "VampireBat.h"
+#include "Door.h"
+#include "ChangeSceneBlock.h"
+#include "Boss.h"
 
 
 Simon::Simon() : GameObject() {
@@ -154,7 +157,7 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				y += dy;
 			}
 
-			else if (dynamic_cast<Zombie*>(e->obj) || dynamic_cast<BlackLeopard*>(e->obj) || dynamic_cast<FishMan*>(e->obj))
+			else if (dynamic_cast<Zombie*>(e->obj) || dynamic_cast<BlackLeopard*>(e->obj) || dynamic_cast<FishMan*>(e->obj) || dynamic_cast<VampireBat*>(e->obj) || dynamic_cast<Boss*>(e->obj))
 			{
 				if (state != POWER && untouchableTimer->IsTimeUp() == true && invisibilityTimer->IsTimeUp() == true)
 				{
@@ -175,7 +178,17 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 						FishMan* fishman = dynamic_cast<FishMan*>(e->obj);
 						LoseHP(fishman->GetAttack());
 					}
-
+					else if (dynamic_cast<VampireBat*>(e->obj))
+					{
+						VampireBat* bat = dynamic_cast<VampireBat*>(e->obj);
+						bat->SetState(VAMPIRE_BAT_DESTROYED);	// n?u d?i tông trúng simon thì cho hu?
+						LoseHP(bat->GetAttack());
+					}
+					else if (dynamic_cast<Boss*>(e->obj))
+					{
+						Boss* boss = dynamic_cast<Boss*>(e->obj);
+						LoseHP(boss->GetAttack());
+					}
 					if (isStandOnStair == false || HP == 0)  // Simon ??ng trên c?u thang s? không b? b?t ng??c l?i
 					{
 						// ??t tr?ng thái deflect cho simon
@@ -194,7 +207,46 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					if (e->ny != 0) y += dy;
 				}
 			}
+			else if (dynamic_cast<Door*>(e->obj))
+			{
+				auto door = dynamic_cast<Door*>(e->obj);
 
+				if (door->GetState() == DOOR_2_IDLE)
+				{
+					vx = 0;
+
+					if (e->nx == CDIR_LEFT)	 // Simon ?ã ?i qua c?a
+						x += 1.0f;		 // +1 ?? không b? overlap
+					else
+					{
+						door->SetState(DOOR_2_OPEN);
+						door->animations[DOOR_2_OPEN]->SetAniStartTime(GetTickCount());
+
+						isWalkThroughDoor = true;
+					}
+				}
+				else if (e->obj->GetState() == DOOR_1)	// ?i qua c?a c?a scene 1
+				{
+					SetState(WALK);
+					vx = SIMON_WALKING_SPEED_LOWER;
+					vy = 0;
+					AutoWalk(80, IDLE, DIR_RIGHT);
+				}
+			}
+			else if (dynamic_cast<ChangeSceneBlock*>(e->obj))
+			{
+				x += dx;
+				y += dy;
+
+				ChangeSceneBlock* obj = dynamic_cast<ChangeSceneBlock*>(e->obj);
+
+				if ((obj->GetIDNextScene() == SCENE_3 && this->state == STAIR_DOWN) ||
+					(obj->GetIDNextScene() == SCENE_2 && (this->state == STAIR_UP || this->state == WALK)))
+				{
+					isAutoWalk = false;
+					this->changeScene = obj->GetIDNextScene();
+				}
+			}
 		}
 	}
 
@@ -629,6 +681,11 @@ void Simon::CheckCollisionWithEnemyActiveArea(vector<LPGAMEOBJECT>* listObjects)
 
 				if (bat->GetState() == VAMPIRE_BAT_INACTIVE && bat->IsAbleToActivate() == true)
 					bat->SetState(VAMPIRE_BAT_ACTIVE);
+			}
+			else if (dynamic_cast<Boss*>(enemy))
+			{
+				Boss* boss = dynamic_cast<Boss*>(enemy);
+				boss->SetState(BOSS_ACTIVE);
 			}
 		}
 	}

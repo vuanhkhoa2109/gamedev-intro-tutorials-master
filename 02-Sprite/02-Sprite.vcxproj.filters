@@ -120,6 +120,12 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="ChangeSceneBlock.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -216,6 +222,12 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Boss.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeSceneBlock.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
