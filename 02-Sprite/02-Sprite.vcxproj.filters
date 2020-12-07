@@ -126,6 +126,12 @@
     <ClCompile Include="Door.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="BreakWall.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="WallBlock.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -228,6 +234,12 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Door.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakWall.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="WallBlock.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

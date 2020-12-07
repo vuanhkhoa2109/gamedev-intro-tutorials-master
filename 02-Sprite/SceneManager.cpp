@@ -211,7 +211,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			changeScene->SetEnable(true);
 			grid->Add(changeScene);
 		}
-		/*else if (ID_Obj == BREAKWALL)
+		else if (ID_Obj == BREAKWALL)
 		{
 			BreakWall* breakwall = new BreakWall();
 			breakwall->SetPosition(pos_x, pos_y);
@@ -219,7 +219,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 			breakwall->SetState(NORMAL);
 			breakwall->SetIdItem(nameItem);
 			grid->Add(breakwall);
-		}*/
+		}
 	}
 	fs.close();
 }
@@ -247,7 +247,7 @@ void SceneManager::GetObjectFromGrid()
 			listDoors.push_back(obj);
 		else if (dynamic_cast<Stair*>(obj))
 			listStairs.push_back(obj);
-		else if (dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj))
+		else if (dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj) || dynamic_cast<BreakWall*>(obj))
 			listStaticObjectsToRender.push_back(obj);
 		else
 			listMovingObjectsToRender.push_back(obj);
@@ -550,6 +550,13 @@ void SceneManager::SetDropItems()
 			object->GetPosition(x, y);
 			object->SetIsDroppedItem(true);
 		}
+		else if (dynamic_cast<BreakWall*>(object)
+			&& object->GetState() == BREAK && object->IsDroppedItem() == false)
+		{
+			idItem = object->nameItem;
+			object->GetPosition(x, y);
+			object->SetIsDroppedItem(true);
+		}
 		if (dynamic_cast<GetHiddenMoneyObject*>(object) && object->GetState() == TOUCHED)
 		{
 			idItem = object->nameItem;
@@ -575,15 +582,6 @@ void SceneManager::SetDropItems()
 				y = game->GetCamPos().y + SCREEN_HEIGHT / 2;
 			}
 		}
-
-		/*else if (dynamic_cast<BreakWall*>(object)
-			&& object->GetState() == BREAK && object->IsDroppedItem() == false)
-		{
-			idItem = object->nameItem;
-			object->GetPosition(x, y);
-			object->SetIsDroppedItem(true);
-		}
-		}*/
 
 		if (idItem != "")
 		{
@@ -850,6 +848,8 @@ void SceneManager::Simon_Update(DWORD dt)
 	{
 		if (dynamic_cast<Ground*>(obj) || dynamic_cast<Candle*>(obj) || dynamic_cast<GetHiddenMoneyObject*>(obj) || dynamic_cast<Door*>(obj) || dynamic_cast<ChangeSceneBlock*>(obj))
 			coObjects.push_back(obj);
+		else if (dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL)
+			coObjects.push_back(obj);
 		else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE ||
 			dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE ||
 			dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE ||
@@ -956,7 +956,7 @@ void SceneManager::Zombie_Update(DWORD dt, LPGAMEOBJECT& object)
 
 		for (auto obj : listObjects)
 		{
-			if (dynamic_cast<Ground*>(obj)/* || (dynamic_cast<BreakWall*>(obj)*/ /*&& obj->GetState() == NORMAL*/)
+			if (dynamic_cast<Ground*>(obj) || (dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL))
 				coObjects.push_back(obj);
 		}
 
@@ -987,7 +987,7 @@ void SceneManager::BlackLeopard_Update(DWORD dt, LPGAMEOBJECT& object)
 
 		for (auto obj : listObjects)
 		{
-			if (dynamic_cast<Ground*>(obj))
+			if (dynamic_cast<Ground*>(obj) || (dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL))
 				coObjects.push_back(obj);
 		}
 
@@ -1093,7 +1093,7 @@ void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
 
 			for (auto obj : listObjects)
 			{
-				if (/*(dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL) ||*/
+				if ((dynamic_cast<BreakWall*>(obj) && obj->GetState() == NORMAL) ||
 					dynamic_cast<Ground*>(obj) || dynamic_cast<Water*>(obj))
 					coObjects.push_back(obj);
 			}

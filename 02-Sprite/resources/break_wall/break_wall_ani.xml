@@ -3,7 +3,7 @@
         <frame spriteID="wall_break" time="100"/>
     </animation> 
 
-     <animation ID="WALL_PIECE" defaultTime="100">
-        <frame spriteID="wall_piece" time="100"/>
+     <animation ID="WALL_BLOCK" defaultTime="100">
+        <frame spriteID="wall_block" time="100"/>
     </animation> 
 </animations>

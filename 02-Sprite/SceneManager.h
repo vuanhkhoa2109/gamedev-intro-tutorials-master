@@ -27,6 +27,7 @@
 #include "SubWeapon.h"
 #include "Door.h"
 #include "ChangeSceneBlock.h"
+#include "BreakWall.h"
 
 using namespace std;
 

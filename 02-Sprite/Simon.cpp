@@ -12,6 +12,7 @@
 #include "Door.h"
 #include "ChangeSceneBlock.h"
 #include "Boss.h"
+#include "BreakWall.h"
 
 
 Simon::Simon() : GameObject() {
@@ -91,7 +92,7 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (dynamic_cast<Ground*>(e->obj))
+			if (dynamic_cast<Ground*>(e->obj) || dynamic_cast<BreakWall*>(e->obj))
 			{
 				if (e->ny != 0)
 				{

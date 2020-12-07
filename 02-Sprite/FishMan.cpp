@@ -1,6 +1,7 @@
 #include "FishMan.h"
 #include "Ground.h"
 #include "Water.h"
+#include "BreakWall.h"
 //#include "BreakWall.h"
 
 FishMan::FishMan()
@@ -81,7 +82,7 @@ void FishMan::Update(DWORD dt, vector<LPGAMEOBJECT>* coObject)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (dynamic_cast<Ground*>(e->obj) /*|| dynamic_cast<BreakWall*>(e->obj)*/)
+			if (dynamic_cast<Ground*>(e->obj) || dynamic_cast<BreakWall*>(e->obj))
 			{
 				if (e->ny != 0)
 				{

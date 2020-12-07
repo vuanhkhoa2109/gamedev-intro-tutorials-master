@@ -308,8 +308,8 @@ constexpr float BOSS_FAST_TIME_TO_FLY = 750;
 constexpr float BOSS_STOP_TIME_WAITING = 1500;
 
 // Wall pieces
-constexpr float	WALLPIECES_GRAVITY = 0.0005f;
-constexpr float WALLPIECES_TIME = 2000;
+constexpr float	WALLBLOCKS_GRAVITY = 0.0005f;
+constexpr float WALLBLOCKS_TIME = 2000;
 
 #pragma endregion
 

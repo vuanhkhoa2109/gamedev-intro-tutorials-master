@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="BlackLeopard.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BreakWall.cpp" />
     <ClCompile Include="Bubbles.cpp" />
     <ClCompile Include="Candle.cpp" />
     <ClCompile Include="ChangeSceneBlock.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="VampireBat.cpp" />
+    <ClCompile Include="WallBlock.cpp" />
     <ClCompile Include="Water.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
@@ -160,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="BlackLeopard.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BreakWall.h" />
     <ClInclude Include="Bubbles.h" />
     <ClInclude Include="Candle.h" />
     <ClInclude Include="ChangeSceneBlock.h" />
@@ -189,6 +192,7 @@
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="VampireBat.h" />
+    <ClInclude Include="WallBlock.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
