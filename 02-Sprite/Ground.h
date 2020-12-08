@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "LoadResource.h"
 
 #define BRICK_BBOX_WIDTH  32
 #define BRICK_BBOX_HEIGHT 32

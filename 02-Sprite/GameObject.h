@@ -4,11 +4,17 @@
 #include <d3dx9.h>
 #include <vector>
 #include <unordered_map>
-#include "Const.h"
+#include <d3dx9.h>
+#include <algorithm>
 
 #include "Sprites.h"
 #include "Textures.h"
 #include "LoadResource.h"
+#include "debug.h"
+#include "Textures.h"
+#include "Game.h"
+#include "Sprites.h"
+#include "Const.h"
 
 using namespace std;
 

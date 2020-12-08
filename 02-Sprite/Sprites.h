@@ -4,8 +4,10 @@
 #include <unordered_map>
 #include <rapidxml/rapidxml.hpp>
 #include <rapidxml/rapidxml_utils.hpp>
+
 #include "Const.h"
 #include "Game.h"
+#include "debug.h"
 
 using namespace rapidxml;
 

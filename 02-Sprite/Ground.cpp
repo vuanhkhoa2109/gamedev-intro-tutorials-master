@@ -1,5 +1,4 @@
 #include "Ground.h"
-#include "LoadResource.h"
 
 Ground::Ground()
 {

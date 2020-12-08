@@ -1,7 +1,4 @@
 #include "LoadResource.h"
-#include <rapidxml\rapidxml_utils.hpp>
-#include "Sprites.h"
-#include "Textures.h"
 
 LoadResourceFile* LoadResourceFile::_instance = NULL;
 

@@ -5,6 +5,12 @@
 #include "BlackLeopard.h"
 #include "FireBall.h"
 #include "FishMan.h"
+#include "LoadResource.h"
+#include "Candle.h"
+#include "BreakWall.h"
+#include "Boss.h"
+#include "VampireBat.h"
+
 class Weapon :
 	public GameObject
 {

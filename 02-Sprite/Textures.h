@@ -2,6 +2,11 @@
 #include <map>
 #include <d3dx9.h>
 #include <string>
+#include <Windows.h>
+#include <d3d9.h>
+
+#include "debug.h"
+#include "Game.h"
 
 using namespace std;
 

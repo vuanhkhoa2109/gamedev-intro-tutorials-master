@@ -110,7 +110,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	game->Init(hWnd);
 
 	scenes = new SceneManager(game);
-	scenes->Init(SCENE_2);
+	scenes->Init(SCENE_1);
 
 	input = new KeyBoardInput(game, scenes);
 	game->InitKeyboard(input);

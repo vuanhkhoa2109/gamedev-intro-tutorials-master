@@ -1,8 +1,4 @@
-
 #include "Zombie.h"
-#include "LoadResource.h"
-
-
 
 Zombie::Zombie()
 {

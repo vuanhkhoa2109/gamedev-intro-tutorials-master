@@ -8,6 +8,8 @@
 #include "Textures.h"
 #include "Debug.h"
 #include "Sprites.h"
+#include "Const.h"
+#include "LoadResource.h"
 
 using namespace std;
 

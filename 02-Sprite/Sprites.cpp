@@ -1,6 +1,4 @@
 #include "Sprites.h"
-#include "Game.h"
-#include "debug.h"
 
 Sprite::Sprite(string idSprite, int left, int top, int width, int height, LPDIRECT3DTEXTURE9 tex)
 {

@@ -1,7 +1,9 @@
 #pragma once
 
 #include <vector>
+
 #include "GameObject.h"
+#include "debug.h"
 typedef vector<LPGAMEOBJECT> listUnits;
 
 class Grid

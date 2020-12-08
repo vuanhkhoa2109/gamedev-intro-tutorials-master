@@ -1,4 +1,6 @@
 #pragma once
+#include <algorithm>
+
 #include "GameObject.h"
 #include "Weapon.h"
 #include "LoadResource.h"
@@ -7,9 +9,20 @@
 #include "Items.h"
 #include "Candle.h"
 #include "FireBall.h"
-#include "FishMan.h"
 #include "BlackLeopard.h"
 #include "Water.h"
+#include "debug.h"
+#include "Game.h"
+#include "Ground.h"
+#include "GetHiddenMoneyObject.h"
+#include "Zombie.h"
+#include "BlackLeopard.h"
+#include "FishMan.h"
+#include "VampireBat.h"
+#include "Door.h"
+#include "ChangeSceneBlock.h"
+#include "Boss.h"
+#include "BreakWall.h"
 
 class Simon : public GameObject
 {

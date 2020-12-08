@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "Simon.h"
 #include "SceneManager.h"
+#include "Const.h"
 
 class KeyBoardInput : public KeyEventHandler
 {

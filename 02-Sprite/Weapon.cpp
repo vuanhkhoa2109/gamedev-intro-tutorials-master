@@ -1,10 +1,4 @@
-#include "weapon.h"
-#include "LoadResource.h"
-#include "Candle.h"
-#include "BreakWall.h"
-#include "Boss.h"
-#include "VampireBat.h"
-
+#include "Weapon.h"
 
 Weapon::Weapon()
 {

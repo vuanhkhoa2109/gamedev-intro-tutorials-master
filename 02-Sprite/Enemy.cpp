@@ -1,5 +1,5 @@
 #include "Enemy.h"
-#include "debug.h"
+
 
 Enemy::Enemy()
 {

@@ -1,6 +1,4 @@
 #include "Grid.h"
-#include "debug.h"
-
 
 Grid::Grid(int map_width, int map_height, int cell_width, int cell_height)
 {

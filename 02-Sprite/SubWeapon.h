@@ -1,6 +1,17 @@
 #pragma once
 #include "GameObject.h"
 
+#include "LoadResource.h"
+#include "Candle.h"
+#include "FireBall.h"
+#include "Zombie.h"
+#include "BlackLeopard.h"
+#include "VampireBat.h"
+#include "FishMan.h"
+#include "Ground.h"
+#include "simon.h"
+#include "Boss.h"
+
 class SubWeapon : public GameObject
 {
 	bool isHolyWaterShattered = false;

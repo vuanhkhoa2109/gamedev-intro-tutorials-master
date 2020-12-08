@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enemy.h"
+#include "debug.h"
 
 class Boss : public Enemy
 {

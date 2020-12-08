@@ -1,19 +1,4 @@
-#include <algorithm>
-#include "debug.h"
-
 #include "Simon.h"
-#include "Game.h"
-#include "Ground.h"
-#include "GetHiddenMoneyObject.h"
-#include "Zombie.h"
-#include "BlackLeopard.h"
-#include "FishMan.h"
-#include "VampireBat.h"
-#include "Door.h"
-#include "ChangeSceneBlock.h"
-#include "Boss.h"
-#include "BreakWall.h"
-
 
 Simon::Simon() : GameObject() {
 
@@ -96,8 +81,6 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			{
 				if (e->ny != 0)
 				{
-					// BUG: 
-					// Simon deflect ngay l?p t?c va ch?m v?i ground (?ôi lúc) -> không b?t nh?y ???c.
 					if (e->ny == CDIR_BOTTOM && (state != DEFLECT || (state == DEFLECT && vy > 0)))
 					{
 						isCollisionWithStair = false;
@@ -115,7 +98,6 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 						y += dy;
 				}
 
-				// Khi ?ang lên/xu?ng c?u thang, va ch?m theo tr?c x s? không ???c xét t?i
 				if (state == STAIR_UP || state == STAIR_DOWN)
 					if (nx != 0) x -= nx * 0.1f;
 			}
@@ -182,7 +164,7 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					else if (dynamic_cast<VampireBat*>(e->obj))
 					{
 						VampireBat* bat = dynamic_cast<VampireBat*>(e->obj);
-						bat->SetState(VAMPIRE_BAT_DESTROYED);	// n?u d?i tông trúng simon thì cho hu?
+						bat->SetState(VAMPIRE_BAT_DESTROYED);
 						LoseHP(bat->GetAttack());
 					}
 					else if (dynamic_cast<Boss*>(e->obj))
@@ -190,9 +172,8 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 						Boss* boss = dynamic_cast<Boss*>(e->obj);
 						LoseHP(boss->GetAttack());
 					}
-					if (isStandOnStair == false || HP == 0)  // Simon ??ng trên c?u thang s? không b? b?t ng??c l?i
+					if (isStandOnStair == false || HP == 0)
 					{
-						// ??t tr?ng thái deflect cho simon
 						if (e->nx != 0)
 						{
 							if (e->nx == CDIR_LEFT && this->nx == 1) this->nx = DIR_LEFT;
@@ -216,8 +197,8 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					vx = 0;
 
-					if (e->nx == CDIR_LEFT)	 // Simon ?ã ?i qua c?a
-						x += 1.0f;		 // +1 ?? không b? overlap
+					if (e->nx == CDIR_LEFT)
+						x += 1.0f;	
 					else
 					{
 						door->SetState(DOOR_2_OPEN);
@@ -226,7 +207,7 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 						isWalkThroughDoor = true;
 					}
 				}
-				else if (e->obj->GetState() == DOOR_1)	// ?i qua c?a c?a scene 1
+				else if (e->obj->GetState() == DOOR_1)
 				{
 					SetState(WALK);
 					vx = SIMON_WALKING_SPEED_LOWER;
@@ -272,21 +253,20 @@ void Simon::Render()
 	string tempState = state;
 	int alpha = 255;
 
-	// Khi Simon r?i t? trên cao xu?ng thì luôn co chân
-	// S? d?ng bi?n t?m ?? không thay ??i tr?ng thái g?c c?a Simon
+	// Khi Simon simon r?i thì co chân l?i
 	if (state != DEAD && IsHit() == false && isFalling == true)
 		tempState = JUMP;
 
-	if (untouchableTimer->IsTimeUp() == false)  // ?? render Simon nh?p nháy trong tr?ng thái isUntouchable
+	if (untouchableTimer->IsTimeUp() == false)  // Render nh?p nháy
 		alpha = rand() % 255;
 	else if (invisibilityTimer->IsTimeUp() == false)
 	{
 		float ratio = (float)(GetTickCount() - invisibilityTimer->GetStartTime()) / SIMON_INVISIBILITY_TIME;
 
-		if (ratio < 0.5f)			// nh?p nháy
+		if (ratio < 0.5f)	
 			alpha = 50;
 		else
-			alpha = (int)(255 * ratio);	// render rõ d?n theo th?i gian
+			alpha = (int)(255 * ratio);
 	}
 
 	animations[tempState]->Render(nx, x, y, alpha);
@@ -414,9 +394,8 @@ void Simon::SetState(string state)
 
 void Simon::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	// sprite có kích th??c là 60x66, bbox là 40x62
-	left = x + 15; //30,60
-	top = y + 2;  //62,66
+	left = x + 15;
+	top = y + 2;
 	right = left + SIMON_BBOX_WIDTH;
 	bottom = top + SIMON_BBOX_HEIGHT;
 
@@ -433,7 +412,7 @@ void Simon::LoseHP(int x)
 void Simon::GetBoundingBoxFoot(float& left, float& top, float& right, float& bottom)
 {
 	top += 55;
-	bottom += 10;  // bottom +5 ?? xét cho va ch?m v?i b?c thang ??u tiên khi b??c xu?ng
+	bottom += 10;
 	left += 5;
 	right -= 5;
 }
@@ -575,9 +554,8 @@ bool Simon::CheckCollisionWithItem(vector<LPGAMEOBJECT>* listItem)
 
 			else if (nameItem == CHAIN)
 			{
-				SetState(POWER); // ??i tr?ng thái power - bi?n hình nh?p nháy các ki?u ?à ?i?u
+				SetState(POWER);
 				vx = 0;
-				// lên ??i whip
 				if (weapon->GetState() == MAGIC_WHIP) weapon->SetState(SHORT_CHAIN);
 				else if (weapon->GetState() == SHORT_CHAIN) weapon->SetState(LONG_CHAIN);
 			}
@@ -640,7 +618,6 @@ void Simon::CheckCollisionWithEnemyActiveArea(vector<LPGAMEOBJECT>* listObjects)
 		if (enemy == NULL)
 			continue;
 
-		// Không c?n xét vùng active n?a khi nó ?ang active / destroyed
 		if (enemy->GetState() == ZOMBIE_ACTIVE ||
 			enemy->GetState() == FISHMAN_ACTIVE ||
 			enemy->GetState() == BLACK_LEOPARD_ACTIVE ||
@@ -707,7 +684,7 @@ void Simon::DoAutoWalk()
 		nx = nxAfterAutoWalk;
 
 		SetState(state);
-		if (state == STAIR_DOWN) y += 1.0f; // + 1.0f ?? ??m b?o simon s? va ch?m v?i b?c thang trong l?n update k? ti?p
+		if (state == STAIR_DOWN) y += 1.0f;
 
 		isAutoWalk = false;
 		autoWalkDistance = 0;

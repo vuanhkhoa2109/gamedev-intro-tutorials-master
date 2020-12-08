@@ -1,6 +1,4 @@
 #include "Boss.h"
-#include "debug.h"
-
 
 Boss::Boss()
 {

@@ -4,6 +4,8 @@
 #include <rapidxml/rapidxml_utils.hpp>
 
 #include "Const.h"
+#include "Sprites.h"
+#include "Textures.h"
 
 using namespace std;
 

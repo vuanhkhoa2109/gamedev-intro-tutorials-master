@@ -19,14 +19,20 @@
     <Filter Include="Framework">
       <UniqueIdentifier>{d000eaf2-1f23-40a4-b442-95f71965b734}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects">
+    <Filter Include="StaticObjects">
+      <UniqueIdentifier>{b6aa113b-22a0-4ebf-8ca8-7a3d4982e428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MoveObjecs">
       <UniqueIdentifier>{c4f96bf9-82a2-44b5-ac08-4a77c88f2875}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{136d6425-1b6a-4844-bdf9-4f975dd77b05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{50c4b9d2-29bb-41b5-b758-07eac4fa1a3d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="debug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,13 +58,7 @@
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Simon.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="TileMap.cpp">
       <Filter>Framework</Filter>
@@ -66,77 +66,83 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Candle.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Items.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
     <ClCompile Include="HiddenObject.cpp">
       <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="GetHiddenMoneyObject.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="MoneyBagFlashing.cpp">
-      <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="BlackLeopard.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Stair.cpp">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="FireBall.cpp">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="FishMan.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Water.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Bubbles.cpp">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="VampireBat.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="SubWeapon.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Boss.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="ChangeSceneBlock.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Door.cpp">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClCompile>
     <ClCompile Include="BreakWall.cpp">
-      <Filter>Objects</Filter>
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubbles.cpp">
+      <Filter>MoveObjecs</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeSceneBlock.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GetHiddenMoneyObject.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBagFlashing.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Items.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>StaticObjects</Filter>
     </ClCompile>
     <ClCompile Include="WallBlock.cpp">
-      <Filter>Objects</Filter>
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="debug.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Const.h">
       <Filter>Constants</Filter>
     </ClInclude>
@@ -162,13 +168,7 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Simon.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Header Files</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>Framework</Filter>
@@ -176,71 +176,80 @@
     <ClInclude Include="Grid.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Candle.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Ground.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Items.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
     <ClInclude Include="HiddenObject.h">
       <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="GetHiddenMoneyObject.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="MoneyBagFlashing.h">
-      <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="BlackLeopard.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Stair.h">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="FireBall.h">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="FishMan.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Water.h">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="Bubbles.h">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="VampireBat.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI.h">
-      <Filter>Source Files</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="SubWeapon.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Boss.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="ChangeSceneBlock.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Door.h">
-      <Filter>Objects</Filter>
+      <Filter>MoveObjecs</Filter>
     </ClInclude>
     <ClInclude Include="BreakWall.h">
-      <Filter>Objects</Filter>
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Candle.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeSceneBlock.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GetHiddenMoneyObject.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyBagFlashing.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Items.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>StaticObjects</Filter>
     </ClInclude>
     <ClInclude Include="WallBlock.h">
-      <Filter>Objects</Filter>
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

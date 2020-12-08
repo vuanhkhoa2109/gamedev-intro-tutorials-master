@@ -1,7 +1,5 @@
 #include "VampireBat.h"
 
-
-
 VampireBat::VampireBat()
 {
 	LoadResourceFile* loadResourceFile = LoadResourceFile::GetInstance();

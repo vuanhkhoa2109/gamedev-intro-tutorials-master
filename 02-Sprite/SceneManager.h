@@ -1,5 +1,7 @@
 #pragma once
 
+#include <map>
+
 #include "Game.h"
 #include "GameObject.h"
 #include "TileMap.h"
@@ -18,8 +20,6 @@
 #include "FireBall.h"
 #include "Water.h"
 #include "VampireBat.h"
-
-#include <map>
 #include "MoneyBagFlashing.h"
 #include "Stair.h"
 #include "GUI.h"
@@ -44,25 +44,16 @@ class SceneManager
 	vector<LPGAMEOBJECT> listStairs;
 
 	Simon* simon;
-	Candle* candle;
-	Ground* ground;
 	Items* item;
 	Weapon* weapon;
-	BlackLeopard* leopard;
-	GetHiddenMoneyObject* hiddenObject;
-	MoneyBagFlashing* moneyBag;
 	SubWeapon* subweapon;
 	Stair* stair;
-	Door* door;
-	Zombie* zombie;
-	FishMan* fishman;
 	FireBall* fireball;
-	Water* water;
 	Bubble* bubble;
-	VampireBat* bat;
 	Boss* boss;
-	ChangeSceneBlock* changeScene;
 	GUI* gui;
+	Water* water;
+	FishMan* fishman;
 
 	TileMaps* tilemaps = TileMaps::GetInstance();
 	Textures* textures = Textures::GetInstance();
@@ -76,7 +67,7 @@ class SceneManager
 
 	bool stopWatchMoment = false;
 
-	bool isSetSimonAutoWalk = false;	//
+	bool isSetSimonAutoWalk = false;
 	bool isMovingCamera1 = false;
 	bool isMovingCamera2 = false;
 	int countDxCamera = 0;
@@ -113,18 +104,18 @@ public:
 
 	void Render();
 
-	bool SimonWalkThroughDoor();				// Di chuy?n camera -> Simon auto walk -> di chuy?n camera
+	bool SimonWalkThroughDoor();			
 
-	string GetRandomItem();						// Random item cho object b? hu?
-	void SetDropItems();						// Xét r?i item cho các object b? hu?	
+	string GetRandomItem();						
+	void SetDropItems();				
 
 	bool IsInViewport(LPGAMEOBJECT object);
-	void SetInactivationByPosition();			// N?u object ra kh?i vùng viewport thì set unable / inactive
+	void SetInactivationByPosition();			
 
-	void ChangeScene();							// Chuy?n ??i scene khi Simon va ch?m v?i ChangeSceneObject
+	void ChangeScene();					
 
-	void SetGameState(int state);				// Set v? trí c?a simon, camera theo id state
-	void ResetGame();							// Reset l?i tr?ng thái c?a game (map, simon...) sau khi simon ch?t
+	void SetGameState(int state);				
+	void ResetGame();						
 
 	// Get, Set
 	int GetIDScene() { return this->IDScene; }

@@ -1,5 +1,4 @@
 #include "Items.h"
-#include "LoadResource.h"
 
 Items::Items()
 {

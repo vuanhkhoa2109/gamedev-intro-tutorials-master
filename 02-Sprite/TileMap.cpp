@@ -1,7 +1,4 @@
 #include "TileMap.h"
-#include "Const.h"
-#include "LoadResource.h"
-
 
 TileMap::TileMap(int ID, LPCWSTR filePathTex, LPCWSTR filePathData, int mapWidth, int mapHeight, int tileWidth, int tileHeight)
 {

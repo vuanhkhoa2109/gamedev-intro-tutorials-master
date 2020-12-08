@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Enemy.h"
+#include "Ground.h"
+#include "Water.h"
+#include "BreakWall.h"
 
 class FishMan :public Enemy
 {

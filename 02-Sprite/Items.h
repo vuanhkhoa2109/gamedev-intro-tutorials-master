@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "LoadResource.h"
 
 class Items : public GameObject
 {

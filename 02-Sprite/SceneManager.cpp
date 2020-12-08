@@ -11,6 +11,7 @@ SceneManager::SceneManager(Game* game)
 	simon = new Simon();
 	gui = new GUI();
 	boss = new Boss();
+	water = new Water();
 
 	for (int i = 1; i <= 3; i++)
 	{
@@ -61,15 +62,10 @@ void SceneManager::LoadResources()
 
 	simon = new Simon();
 
-	candle = new Candle();
 	item = new Items();
-	zombie = new Zombie();
-	fishman = new FishMan();
 	fireball = new FireBall();
 	bubble = new Bubble();
-	bat = new VampireBat();
 	subweapon = new SubWeapon();
-	boss = new Boss();
 
 	tilemaps->Add(SCENE_1, FILEPATH_TEX_MAP_SCENE_1, FILEPATH_DATA_MAP_SCENE_1, 1536, 320);
 	tilemaps->Add(SCENE_2, FILEPATH_TEX_MAP_SCENE_2, FILEPATH_DATA_MAP_SCENE_2, 5632, 352);
@@ -99,7 +95,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		fs >> ID_Obj >> pos_x >> pos_y >> state >> isEnable >> nameItem >> typeStair;
 		if (ID_Obj == CANDLE)
 		{
-			candle = new Candle();
+			Candle* candle = new Candle();
 			candle->SetPosition(pos_x, pos_y);
 			candle->SetState(state);
 			candle->isEnable = isEnable;
@@ -108,7 +104,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == GROUND)
 		{
-			ground = new Ground();
+			Ground* ground = new Ground();
 			ground->SetPosition(pos_x, pos_y);
 			ground->SetState(state);
 			ground->isEnable = isEnable;
@@ -116,8 +112,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == HIDDEN)
 		{
-			hiddenObject = new GetHiddenMoneyObject();
-			//hiddenObject->SetSize(30, 30);
+			GetHiddenMoneyObject* hiddenObject = new GetHiddenMoneyObject();
 			hiddenObject->SetPosition(pos_x, pos_y);
 			hiddenObject->SetState(state);
 			hiddenObject->isEnable = isEnable;
@@ -126,7 +121,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == ZOMBIE)
 		{
-			zombie = new Zombie();
+			Zombie* zombie = new Zombie();
 			zombie->SetPosition(pos_x, pos_y);
 			zombie->SetEntryPosition(pos_x, pos_y);
 			zombie->SetState(state);
@@ -135,7 +130,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == BLACK_LEOPARD)
 		{
-			leopard = new BlackLeopard();
+			BlackLeopard* leopard = new BlackLeopard();
 			leopard->SetPosition(pos_x, pos_y);
 			leopard->SetEntryPosition(pos_x, pos_y);
 			leopard->SetState(INACTIVE);
@@ -144,7 +139,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == STAIR)
 		{
-			stair = new Stair();
+			Stair* stair = new Stair();
 			stair->SetPosition(pos_x, pos_y);
 			stair->SetState(state);
 			stair->SetEnable(isEnable);
@@ -154,7 +149,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == FISHMAN)
 		{
-			fishman = new FishMan();
+			FishMan* fishman = new FishMan();
 			fishman->SetPosition(pos_x, pos_y);
 			fishman->SetEntryPosition(pos_x, pos_y);
 			fishman->SetState(FISHMAN_INACTIVE);
@@ -170,7 +165,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == VAMPIRE_BAT)
 		{
-			bat = new VampireBat();
+			VampireBat* bat = new VampireBat();
 			bat->SetPosition(pos_x, pos_y);
 			bat->SetEntryPosition(pos_x, pos_y);
 			bat->SetState(VAMPIRE_BAT_INACTIVE);
@@ -179,7 +174,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == BOSS)
 		{
-			boss = new Boss();
+			Boss* boss = new Boss();
 			boss->SetPosition(pos_x, pos_y);
 			boss->SetEntryPosition(pos_x, pos_y);
 			boss->SetPosition(pos_x, pos_y);
@@ -190,7 +185,7 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == DOOR)
 		{
-			door = new Door();
+			Door* door = new Door();
 			door->SetPosition(pos_x, pos_y);
 			door->SetState(state);
 			door->SetEnable(isEnable);
@@ -198,14 +193,14 @@ void SceneManager::LoadObjectsFromFile(LPCWSTR FilePath)
 		}
 		else if (ID_Obj == WATER)
 		{
-			water = new Water();
+			Water* water = new Water();
 			water->SetPosition(pos_x, pos_y);
 			water->SetEnable(true);
 			grid->Add(water);
 		}
 		else if (ID_Obj == CHANGE_SCENE_BLOCK)
 		{
-			changeScene = new ChangeSceneBlock();
+			ChangeSceneBlock* changeScene = new ChangeSceneBlock();
 			changeScene->SetPosition(pos_x, pos_y);
 			changeScene->SetIDNextScene(atoi(state.c_str()));
 			changeScene->SetEnable(true);
@@ -256,38 +251,39 @@ void SceneManager::GetObjectFromGrid()
 
 void SceneManager::Update(DWORD dt)
 {
-	// N?u Simon ?i qua c?a thì không c?n c?p nh?t hay xét va ch?m
+	//Qua c?a thì không check va ch?m
 	if (SimonWalkThroughDoor() == true)
 		return;
 
-	// Khi Simon va ch?m v?i ChangScene objects, ti?n hành thay ??i, c?p nh?t tr?ng thái
+	//Simon va ch?m change Scene
 	if (simon->changeScene != -1)
 	{
 		ChangeScene();
 		simon->changeScene = -1;
 	}
 
-	// L?y danh sách object t? grid 
+	//L?y object trong Grid
 	GetObjectFromGrid();
 
-	// Cross effect
+	//Kill h?t enemy
 	CrossEffect();
 
-	// C?p nh?t b? ??m th?i gian
+	//Update b? ??m th?i gian
 	UpdateTimeCounter();
 
-	// double shot
+	//L?y ???c Item double shot và set k?t qu?
 	DoubleShotEffect();
 
-	// triple shot
+	//L?y ???c Item triple shot và set k?t qu?
 	TripleShotEffect();
 
-	// Drop item
+	//R?t Item
 	SetDropItems();
 
-	// Update
+	//G?i Update c?a simon
 	Simon_Update(dt);
 
+	//Update Weapon
 	for (int i = 0; i < 3; i++)
 		Weapon_Update(dt, i);
 
@@ -311,17 +307,17 @@ void SceneManager::Update(DWORD dt)
 			object->Update(dt, &listObjects);
 	}
 
-	// Không cho Simon ?i ra kh?i vùng ?ánh boss
+	//?ang ?ánh boss không cho Simon ch?y ra
 	if (isBossFighting == true && simon->x < game->GetCamPos().x)
 		simon->x = game->GetCamPos().x;
 
-	// Xoá các object ?i ra kh?i vùng viewport
+	//Các object ngoài Viewport thì không active
 	SetInactivationByPosition();
 
-	// update camera
+	//Update Camera
 	UpdateCameraPosition();
 
-	// update grid
+	//Update Grid
 	UpdateGrid();
 
 	UpdateTimeGamer();
@@ -341,11 +337,10 @@ void SceneManager::UpdateTimeCounter()
 		stopWatchMoment = true;
 	}
 
-	// Cross
 	if (crossEffectTimer->IsTimeUp() == true)
 		crossEffectTimer->Stop();
 
-	// Simon dead
+	// Simon t?ch
 	if (isSimonDead == true && simonDeadTimer->IsTimeUp() == true)
 	{
 		simonDeadTimer->Stop();
@@ -353,11 +348,9 @@ void SceneManager::UpdateTimeCounter()
 		ResetGame();
 	}
 
-	// Double shot
 	if (doubleShotTimer->IsTimeUp() == true)
 		doubleShotTimer->Stop();
 
-	// Triple shot
 	if (tripleShotTimer->IsTimeUp() == true)
 		tripleShotTimer->Stop();
 }
@@ -369,13 +362,13 @@ void SceneManager::Render()
 	for (auto obj : listStaticObjectsToRender)
 	{
 		obj->Render();
-		obj->RenderBoundingBox();
+		//obj->RenderBoundingBox();
 	}
 
 	for (auto obj : listMovingObjectsToRender)
 	{
 		obj->Render();
-		obj->RenderBoundingBox();
+		//obj->RenderBoundingBox();
 		//obj->RenderActiveBoundingBox();
 	}
 
@@ -398,7 +391,7 @@ void SceneManager::Render()
 
 void SceneManager::UpdateCameraPosition()
 {
-	if (isBossFighting == true)				// Boss fight -> not moving camera
+	if (isBossFighting == true)
 		return;
 
 	if (boss->GetState() == BOSS_ACTIVE)
@@ -439,13 +432,10 @@ void SceneManager::UpdateGrid()
 
 bool SceneManager::SimonWalkThroughDoor()
 {
-	// C?p nh?t tr?ng thái Simon ?i qua c?a:
-	// Di chuy?n Camera -> M? c?a -> AutoWalk -> Di chuy?n Camera
-
+	// Simnon qua c?a
 	if (simon->isWalkThroughDoor == true && simon->isTouchGround == true)
 	{
 		simon->isWalkThroughDoor = false;
-		//simon->isFalling = false;
 		simon->SetN(DIR_RIGHT);
 		simon->SetState(IDLE);
 
@@ -455,7 +445,7 @@ bool SceneManager::SimonWalkThroughDoor()
 
 	if (isMovingCamera1 == true)
 	{
-		if (countDxCamera < 240)			// Di chuy?n camera m?t ?o?n 224
+		if (countDxCamera < 240)
 		{
 			countDxCamera += 2;
 
@@ -479,7 +469,7 @@ bool SceneManager::SimonWalkThroughDoor()
 			{
 				isMovingCamera2 = true;
 
-				if (countDxCamera < 480)	// Di chuy?n camera thêm m?t ?o?n -> 480
+				if (countDxCamera < 480)
 				{
 					countDxCamera += 2;
 
@@ -495,7 +485,7 @@ bool SceneManager::SimonWalkThroughDoor()
 					isSetSimonAutoWalk = false;
 					countDxCamera = 0;
 
-					tilemaps->Get(IDScene)->index += 1;  // t?ng gi?i h?n min_max_col c?a tilemap
+					tilemaps->Get(IDScene)->index += 1;
 				}
 			}
 		}
@@ -735,7 +725,6 @@ void SceneManager::ResetGame()
 	isGameReset = true; // flag variable for reset time in Player::Update()
 
 	isBossFighting = false;
-	/*boss->SetState(BOSS_INACTIVE);*/
 	simon->SetHP(16);
 	simon->SetSubWeapon("");
 	simon->GetWeapon()->SetState(MAGIC_WHIP);
@@ -816,7 +805,7 @@ void SceneManager::DoubleShotEffect()
 	if (simon->isGotDoubleShotItem == true)
 	{
 		simon->isGotDoubleShotItem = false;
-		/*doubleShotTimer->Start();*/
+		doubleShotTimer->Start();
 	}
 }
 
@@ -825,7 +814,7 @@ void SceneManager::TripleShotEffect()
 	if (simon->isGotTripleShotItem == true)
 	{
 		simon->isGotTripleShotItem = false;
-		/*tripleShotTimer->Start();*/
+		tripleShotTimer->Start();
 	}
 }
 
@@ -1057,7 +1046,6 @@ void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
 
 			grid->Add(fireball);
 
-			// ??t h??ng quay m?t c?a Fishman sau khi b?n (quay v? phía simon)
 			float sx, sy;
 			simon->GetPosition(sx, sy);
 
@@ -1085,7 +1073,7 @@ void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
 
 				fishman->SetState(FISHMAN_JUMP);
 
-				// Thêm bubbles vào water ?? render b?t n??c
+				// Thêm bubbles vào water
 				water->AddBubbles(x, y);
 			}
 
@@ -1111,7 +1099,6 @@ void SceneManager::Boss_Update(DWORD dt, LPGAMEOBJECT& object)
 
 	boss = dynamic_cast<Boss*>(object);
 
-	// Passing simon's position for boss movement
 	float sx, sy;
 	simon->GetPosition(sx, sy);
 	boss->SetSimonPosition(sx, sy);

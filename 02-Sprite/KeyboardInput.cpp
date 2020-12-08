@@ -1,5 +1,4 @@
 #include "KeyboardInput.h"
-#include "Const.h"
 
 KeyBoardInput::KeyBoardInput(Game* game, SceneManager* scene)
 {

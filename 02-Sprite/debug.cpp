@@ -1,4 +1,3 @@
-#include <Windows.h>
 #include "debug.h"
 
 HWND _hwnd = NULL;

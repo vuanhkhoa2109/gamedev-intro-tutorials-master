@@ -8,6 +8,7 @@
 #include <dinput.h>
 
 #include "Const.h"
+#include "debug.h"
 
 #define KEYBOARD_BUFFER_SIZE 1024
 /*
