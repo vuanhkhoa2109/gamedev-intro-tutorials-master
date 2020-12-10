@@ -15,8 +15,6 @@ Weapon::Weapon()
 
 void Weapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (this->isLastFame)
-	{
 		for (UINT i = 0; i < coObjects->size(); i++)
 		{
 			LPGAMEOBJECT obj = coObjects->at(i);
@@ -103,17 +101,17 @@ void Weapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (this->AABBx(e) == true)
 				{
 					GetCoordinateObject(obj);
-					e->LoseHP(2);
+					e->LoseHP(5);
 				}
 			}
 		}
-	}
 	this->isLastFame = false;
 }
 
 void Weapon::Render()
 {
 	RenderSpark();
+	RenderBoundingBox();
 	animations[state]->Render(nx, x, y);
 	this->isLastFame = this->animations[state]->IsCompleted();
 }
@@ -147,22 +145,37 @@ void Weapon::GetBoundingBox(float& left, float& top, float& right, float& bottom
 {
 	top = y + 15;
 	bottom = top + WHIP_BBOX_HEIGHT;
-	if (nx < 0)
-	{
-		if (state != LONG_CHAIN)
-			left = x + 50;
-		else left = x + 20;
+	if (this->animations[state]->GetCurrentFrame() < 2) {
+		top = y;
+		bottom = top + 64;
+		left = x + 64;
+		if (nx < 1) {
+			left = x + 64 + 64;
+		}
+		right = left + 32;		
 	}
-	else if (nx > 0)
-	{
+	else {
+		right = left + 32;
+		top = y + 15;
+		bottom = top + WHIP_BBOX_HEIGHT;
+		if (nx < 0)
+		{
+			if (state != LONG_CHAIN)
+			{
+				left = x + 50;
+			}
+			else left = x + 20;
+		}
+		else if (nx > 0)
+		{
+			if (state != LONG_CHAIN)
+				left = (240 - 50) - WHIP_BBOX_WIDTH + x;
+			else left = (240 - 20) - LONG_CHAIN_BBOX_WIDTH + x;
+		}
 		if (state != LONG_CHAIN)
-			left = (240 - 50) - WHIP_BBOX_WIDTH + x;
-		else left = (240 - 20) - LONG_CHAIN_BBOX_WIDTH + x;
+			right = left + WHIP_BBOX_WIDTH;
+		else  right = left + LONG_CHAIN_BBOX_WIDTH;
 	}
-
-	if (state != LONG_CHAIN)
-		right = left + WHIP_BBOX_WIDTH;
-	else  right = left + LONG_CHAIN_BBOX_WIDTH;
 }
 
 void Weapon::SetWeaponPosition(D3DXVECTOR3 simonPositon, bool sitting)

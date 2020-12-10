@@ -114,7 +114,7 @@ D3DXVECTOR2 Boss::GetRandomSpot()
 
 	float distance = 0;
 
-	do // ch?n ?i?m random sao cho quãng ???ng bay dài dài m?t tí
+	do
 	{
 		randomSpot.x = left + rand() % (2 * BOSS_RECT_RANDOMSPOT_BBOX_WIDTH);
 		randomSpot.y = top + rand() % (BOSS_RECT_RANDOMSPOT_BBOX_HEIGHT);
@@ -138,7 +138,6 @@ void Boss::FlyToTarget(DWORD dt)
 		isFlyToTarget = false;
 		this->SetPosition(target.x, target.y);
 
-		//DebugOut(L"target %d\n", idTarget);
 		idTarget = rand() % 2;
 
 		if (isFlyToSimon == true)

@@ -24,9 +24,9 @@ void Stair::Render()
 
 void Stair::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x;
+	l = x - 16;
 	t = y;
-	r = l + STAIR_BBOX_WIDTH;
+	r = l + STAIR_BBOX_WIDTH + 16;
 	b = t + STAIR_BBOX_HEIGHT;
 }
 

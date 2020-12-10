@@ -1,4 +1,5 @@
 #include "Simon.h"
+#include "SubWeapon.h"
 
 Simon::Simon() : GameObject() {
 
@@ -140,7 +141,7 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				y += dy;
 			}
 
-			else if (dynamic_cast<Zombie*>(e->obj) || dynamic_cast<BlackLeopard*>(e->obj) || dynamic_cast<FishMan*>(e->obj) || dynamic_cast<VampireBat*>(e->obj) || dynamic_cast<Boss*>(e->obj))
+			else if (dynamic_cast<Zombie*>(e->obj) || dynamic_cast<BlackLeopard*>(e->obj) || dynamic_cast<FishMan*>(e->obj) || dynamic_cast<VampireBat*>(e->obj) || dynamic_cast<Boss*>(e->obj) || dynamic_cast<SubWeapon*>(e->obj))
 			{
 				if (state != POWER && untouchableTimer->IsTimeUp() == true && invisibilityTimer->IsTimeUp() == true)
 				{
@@ -150,6 +151,11 @@ void Simon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					{
 						Zombie* zombie = dynamic_cast<Zombie*>(e->obj);
 						LoseHP(zombie->GetAttack());
+					}
+					if (dynamic_cast<SubWeapon*>(e->obj))
+					{
+						SubWeapon* sub = dynamic_cast<SubWeapon*>(e->obj);
+						LoseHP(3);
 					}
 					else if (dynamic_cast<BlackLeopard*>(e->obj))
 					{

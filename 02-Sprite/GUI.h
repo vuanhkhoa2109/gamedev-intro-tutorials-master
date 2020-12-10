@@ -19,7 +19,7 @@ public:
 	GUI();
 	~GUI();
 
-	virtual void Update(DWORD time, int idScene, Simon* simon);
+	virtual void Update(DWORD time, int idScene, Simon* simon, Boss* boss);
 	void Render(Simon* simon);
 
 	void SetBossHp(int hp) { this->bossHp = hp; }

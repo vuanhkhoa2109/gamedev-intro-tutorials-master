@@ -12,12 +12,12 @@ GUI::~GUI()
 {
 }
 
-void GUI::Update(DWORD time, int idScene, Simon* simon)
+void GUI::Update(DWORD time, int idScene, Simon* simon, Boss* boss)
 {
 	heart = simon->GetEnergy() < 10 ? "0" + std::to_string(simon->GetEnergy()) : std::to_string(simon->GetEnergy());
 	life = simon->GetLife() < 10 ? "0" + std::to_string(simon->GetLife()) : std::to_string(simon->GetLife());
 	simonHp = simon->GetHP();
-	//bossHp = boss->GetHP();
+	bossHp = boss->GetHP();
 
 	unsigned int score = simon->GetScore();
 	string scoreTempt;

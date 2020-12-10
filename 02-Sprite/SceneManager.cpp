@@ -322,7 +322,7 @@ void SceneManager::Update(DWORD dt)
 
 	UpdateTimeGamer();
 
-	gui->Update(timeGamer, GetIDScene(), GetSimon());
+	gui->Update(timeGamer, GetIDScene(), GetSimon(), GetBoss());
 }
 
 void SceneManager::UpdateTimeCounter()
@@ -372,9 +372,11 @@ void SceneManager::Render()
 		//obj->RenderActiveBoundingBox();
 	}
 
-	simon->Render();
-	simon->RenderBoundingBox();
-
+	for (auto obj : listStairs)
+	{
+		obj->Render();
+		obj->RenderBoundingBox();
+	}
 	for (int i = 0; i < 3; i++)
 	{
 		subweaponList[i]->Render();
@@ -385,6 +387,9 @@ void SceneManager::Render()
 		obj->Render();
 		//obj->RenderBoundingBox();
 	}
+
+	simon->Render();
+	simon->RenderBoundingBox();
 
 	gui->Render(GetSimon());
 }
@@ -851,7 +856,8 @@ void SceneManager::Simon_Update(DWORD dt)
 			else if (dynamic_cast<Zombie*>(obj) && obj->GetState() == ZOMBIE_ACTIVE ||
 				dynamic_cast<BlackLeopard*>(obj) && obj->GetState() == BLACK_LEOPARD_ACTIVE ||
 				dynamic_cast<VampireBat*>(obj) && obj->GetState() == VAMPIRE_BAT_ACTIVE ||
-				dynamic_cast<Boss*>(obj) && obj->GetState() == BOSS_ACTIVE)
+				dynamic_cast<Boss*>(obj) && obj->GetState() == BOSS_ACTIVE ||
+				dynamic_cast<SubWeapon*>(obj))
 				coObjects.push_back(obj);
 			else if (dynamic_cast<FishMan*>(obj) && (obj->GetState() == FISHMAN_ACTIVE || obj->GetState() == FISHMAN_JUMP))
 				coObjects.push_back(obj);
@@ -889,6 +895,8 @@ void SceneManager::Weapon_Update(DWORD dt, int index)
 			coObjects.push_back(obj);
 		else if (dynamic_cast<FishMan*>(obj) &&
 			(obj->GetState() == FISHMAN_ACTIVE || obj->GetState() == FISHMAN_JUMP || obj->GetState() == FISHMAN_HIT))
+			coObjects.push_back(obj);
+		else if (dynamic_cast<Boss*>(obj))
 			coObjects.push_back(obj);
 	}
 
@@ -1038,13 +1046,20 @@ void SceneManager::FishMan_Update(DWORD dt, LPGAMEOBJECT& object)
 			fishman->GetPosition(fx, fy);
 			nx = fishman->GetN();
 
-			auto fireball = new FireBall();
-			fireball->SetPosition(fx + 5, fy + 10);
-			fireball->SetN(nx);
-			fireball->SetState(FIREBALL);
-			fireball->SetEnable(true);
+			//auto fireball = new FireBall();
+			//fireball->SetPosition(fx + 5, fy + 10);
+			//fireball->SetN(nx);
+			//fireball->SetState(FIREBALL);
+			//fireball->SetEnable(true);
 
-			grid->Add(fireball);
+			auto dagger = new SubWeapon();
+			dagger->SetPosition(fx + 5, fy + 10);
+			dagger->SetN(nx);
+			dagger->SetState(DAGGER_SUB);
+			dagger->SetEnable(true);
+			
+
+			grid->Add(dagger);
 
 			float sx, sy;
 			simon->GetPosition(sx, sy);

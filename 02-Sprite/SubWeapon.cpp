@@ -87,19 +87,6 @@ void SubWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 			else if (dynamic_cast<FireBall*>(e->obj))
 			{
-				/*FireBall* fireball = dynamic_cast<FireBall*>(e->obj);
-				fireball->SetEnable(false);
-
-				targetTypeHit = FIREBALL;
-				GetCoordinateObject(e->obj);
-
-				if (state == DAGGER_SUB || state == AXE_SUB || state == BOOMERANG_SUB)
-					this->isEnable = false;
-				else
-				{
-					x += dx;
-					y += dy;
-				}*/
 				if (e->nx != 0) x += dx;
 				if (e->ny != 0) y += dy;
 				if (state == BOOMERANG_SUB)
@@ -155,16 +142,6 @@ void SubWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			}
 			else if (dynamic_cast<FishMan*>(e->obj))
 			{
-				/*FishMan* fishman = dynamic_cast<FishMan*>(e->obj);
-				fishman->SetState(FISHMAN_DESTROYED);
-
-				if (state == DAGGER_SUB || state == AXE_SUB || state == BOOMERANG_SUB)
-					this->isEnable = false;
-				else
-				{
-					x += dx;
-					y += dy;
-				}*/
 				if (e->nx != 0) x += dx;
 				if (e->ny != 0) y += dy;
 				if (state == BOOMERANG_SUB)
@@ -173,7 +150,7 @@ void SubWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			else if (dynamic_cast<Boss*>(e->obj))
 			{
 				Boss* boss = dynamic_cast<Boss*>(e->obj);
-				boss->LoseHP(2);
+				boss->LoseHP(5);
 				targetTypeHit = FISHMAN;
 				GetCoordinateObject(e->obj);
 
@@ -243,7 +220,6 @@ void SubWeapon::SetState(string state)
 
 	else if (state == DAGGER_SUB)
 	{
-		DebugOut(L"sub nx=%d", nx);
 		if (nx > 0) vx = WEAPONS_DAGGER_SPEED;
 		else vx = -WEAPONS_DAGGER_SPEED;
 		vy = 0;
